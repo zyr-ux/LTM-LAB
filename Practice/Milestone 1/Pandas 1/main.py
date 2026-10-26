@@ -6,8 +6,8 @@ def load_student_enquiries(file_path):
     return df.loc[:,:'enquiry_date']
 
 def clean_enquiry_data(df):
-    df_cleaned = df.dropna(subset=['email'])
-    df_cleaned.drop_duplicates(subset=['enquiry_id'])
+    df = df_cleaned = df.dropna(subset=['email'])
+    df = df_cleaned.drop_duplicates(subset=['enquiry_id'])
 
     return df
 

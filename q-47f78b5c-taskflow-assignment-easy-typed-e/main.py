@@ -14,8 +14,26 @@ class TaskFlowError(Exception):
     status = 500
     code = 'internal_error'
 
-# TODO: define ValidationError, NotFoundError, PermissionDeniedError, ConflictError
+class ValidationError(TaskFlowError):
+    status = 422
+    code = 'validation_error'
+
+class NotFoundError(TaskFlowError):
+    status = 404
+    code = 'not_found'
+
+class PermissionDeniedError(TaskFlowError):
+    status = 403
+    code = 'permission_denied'
+
+class ConflictError(TaskFlowError):
+    status = 409
+    code = 'conflict'
 
 def error_response(exc):
-    # TODO: return the JSON error body dict
-    pass
+    # Read status, code, and message off the exception and return as a plain dict
+    return {
+        'status': exc.status,
+        'code': exc.code,
+        'message': str(exc),
+    }

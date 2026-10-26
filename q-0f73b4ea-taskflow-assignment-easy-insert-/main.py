@@ -20,6 +20,22 @@ def insert_tasks(rows):
     engine = create_engine("sqlite://")
     Base.metadata.create_all(engine)
     with Session(engine) as session:
-        # TODO: add a Task for each row, commit, then read them all back
-        # TODO: return a list of plain dicts (not Task objects)
-        pass
+        # Add a Task object for every row in the input list
+        for row in rows:
+            task = Task(
+                title=row["title"],
+                status=row.get("status", "todo"),  # default to "todo" if missing
+            )
+            session.add(task)
+
+        session.commit()
+
+        # Read all tasks back from the DB, ordered by id
+        all_tasks = session.query(Task).order_by(Task.id).all()
+
+        # Convert each Task object into a plain dict before returning
+        result = []
+        for task in all_tasks:
+            result.append({"id": task.id, "title": task.title, "status": task.status})
+
+        return result

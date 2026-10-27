@@ -9,7 +9,7 @@ class PracticeArea(Base):
     name = Column(String, nullable=False)
     floor_number = Column(Integer, nullable=False)
 
-    consultants = relationship('Consultant',back_populates='practice_area')
+    consultant = relationship('Consultant',back_populates='practice_area')
 
 class Consultant(Base):
     __tablename__ = 'consultants'
@@ -21,4 +21,4 @@ class Consultant(Base):
     experience_years = Column(Integer, nullable=False)
     practicearea_id = Column(Integer, ForeignKey('practice_areas.id'),nullable=False)
 
-    practice_area = relationship('PracticeArea',back_populates='consultants')
+    practice_area = relationship('PracticeArea',back_populates='consultant')

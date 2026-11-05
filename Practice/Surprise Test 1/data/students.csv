@@ -1,0 +1,1001 @@
+Student_ID,Age,Gender,Department,Semester,Attendance_Percentage,Study_Hours_Per_Day,Internal_Marks,Assignment_Score,Backlogs,Extracurricular_Activities,Sleep_Hours,Internet_Usage_Hours,Previous_Semester_GPA,Result
+1,27,Male,Computer-Science,4,98.17,2.3,4,94,2,Dance,10.1,8.9,9.53,Fail
+2,30,Male,Computer-Science,2,13.86,15.2,40,4,4,Music,5.4,6.2,5.0,Fail
+3,26,Female,Biotechnology,5,41.2,8.7,17,7,7,Music,5.6,2.9,1.59,Fail
+4,24,Male,Mechanical-Engineering,3,14.17,11.4,3,66,7,Drama,13.4,7.5,2.83,Fail
+5,24,Male,Civil-Engineering,3,79.7,12.9,26,11,4,Volunteer Work,1.3,13.8,4.62,Fail
+6,29,Female,Electrical-Engineering,3,13.11,12.5,31,31,9,Robotics Club,4.5,14.9,4.78,Fail
+7,22,Female,Civil-Engineering,8,44.51,1.8,25,85,6,Drama,0.1,2.2,1.93,Fail
+8,25,Female,Mechanical-Engineering,1,39.04,4.6,25,95,3,Drama,1.2,4.2,1.26,Pass
+9,28,Female,Mechanical-Engineering,6,64.33,15.3,3,71,3,Drama,11.1,14.4,1.5,Pass
+10,18,Female,Civil-Engineering,7,86.3,10.5,0,95,5,Drama,6.9,6.5,5.02,Pass
+11,21,Female,Civil-Engineering,3,29.35,14.2,23,6,4,Drama,11.3,3.2,4.68,Pass
+12,22,Female,Electrical-Engineering,4,84.86,0.3,20,93,5,Debate,4.6,10.3,0.91,Pass
+13,29,Male,Biotechnology,1,6.17,5.4,34,70,0,Music,12.1,10.3,2.43,Fail
+14,26,Female,Civil-Engineering,8,48.22,13.4,24,86,0,Robotics Club,12.2,13.0,7.1,Pass
+15,28,Male,Electrical-Engineering,1,90.85,1.0,5,72,7,Robotics Club,4.2,6.8,4.42,Pass
+16,24,Female,Mechanical-Engineering,8,84.09,4.7,14,68,1,Debate,11.7,10.1,3.13,Pass
+17,27,Female,Electrical-Engineering,5,82.6,15.4,32,33,2,Volunteer Work,5.6,3.8,2.29,Pass
+18,20,Male,Electrical-Engineering,5,59.06,4.5,23,11,6,Volunteer Work,1.9,5.1,5.18,Fail
+19,21,Female,Business-Administration,4,34.52,7.6,17,21,8,Dance,4.7,12.6,0.65,Fail
+20,18,Male,Mechanical-Engineering,5,74.39,5.8,5,20,3,Debate,0.3,5.6,1.57,Pass
+21,18,Male,Electrical-Engineering,6,93.6,12.1,4,34,0,Debate,7.9,1.2,8.99,Fail
+22,24,Male,Business-Administration,8,32.09,0.2,23,64,1,Debate,12.3,7.5,9.16,Pass
+23,30,Female,Biotechnology,2,68.87,8.5,22,36,8,Volunteer Work,10.4,10.6,7.1,Pass
+24,29,Male,Mechanical-Engineering,6,53.87,2.0,16,50,9,Drama,7.3,14.5,4.54,Pass
+25,25,Male,Electrical-Engineering,7,56.51,11.2,30,58,7,Debate,0.5,8.7,3.81,Pass
+26,25,Male,Biotechnology,6,15.06,2.3,4,94,4,Music,10.0,6.9,4.3,Fail
+27,26,Female,Biotechnology,1,48.71,6.9,24,16,5,Music,3.2,12.2,7.49,Fail
+28,20,Male,Electrical-Engineering,4,17.17,7.9,36,92,6,Debate,11.2,6.1,4.24,Pass
+29,18,Female,Mechanical-Engineering,4,80.32,10.5,13,4,1,Music,4.7,2.5,9.38,Pass
+30,29,Male,Mechanical-Engineering,5,51.94,4.1,39,30,8,Robotics Club,5.1,8.7,2.27,Pass
+31,28,Male,Business-Administration,1,91.21,15.0,37,3,10,Music,11.7,0.0,9.32,Fail
+32,23,Male,Computer-Science,6,99.83,3.8,35,68,8,Debate,1.2,2.8,6.79,Pass
+33,21,Female,Mechanical-Engineering,3,45.09,6.9,27,60,6,Dance,7.5,13.1,5.26,Pass
+34,23,Male,Business-Administration,8,62.57,5.1,17,91,8,Debate,3.6,11.9,2.3,Fail
+35,27,Male,Mechanical-Engineering,2,71.69,10.3,14,78,0,Robotics Club,3.2,10.0,7.62,Fail
+36,18,Male,Mechanical-Engineering,6,45.13,0.9,35,98,8,Debate,12.4,9.5,7.85,Pass
+37,26,Female,Mechanical-Engineering,3,85.13,3.2,31,31,10,Music,4.6,4.5,2.55,Fail
+38,22,Male,Civil-Engineering,1,77.2,11.2,1,78,10,Volunteer Work,0.3,8.7,3.09,Pass
+39,25,Male,Biotechnology,6,53.26,5.2,0,58,7,Debate,1.0,3.8,0.59,Fail
+40,20,Female,Biotechnology,3,48.16,6.9,4,47,8,Dance,2.3,3.9,1.16,Pass
+41,28,Female,Electrical-Engineering,4,27.7,4.1,20,77,6,Sports,3.8,9.5,6.91,Fail
+42,24,Female,Biotechnology,6,86.76,15.6,39,49,3,Dance,4.2,14.8,8.12,Fail
+43,23,Male,Business-Administration,5,49.26,10.1,17,73,10,Drama,13.2,2.5,4.13,Fail
+44,29,Female,Computer-Science,7,56.34,8.4,32,46,9,Robotics Club,12.0,14.3,6.07,Fail
+45,25,Male,Mechanical-Engineering,1,46.81,9.5,24,7,7,Sports,2.4,1.3,6.85,Pass
+46,26,Male,Civil-Engineering,2,73.42,9.8,18,2,0,Robotics Club,4.7,15.2,5.19,Pass
+47,28,Female,Electrical-Engineering,2,94.27,1.0,25,56,7,Volunteer Work,10.2,14.5,9.52,Fail
+48,23,Female,Electrical-Engineering,6,12.96,1.4,19,66,8,Drama,1.0,12.1,5.23,Pass
+49,25,Female,Business-Administration,6,41.12,3.9,19,45,2,Music,1.0,11.5,0.59,Fail
+50,23,Female,Biotechnology,2,43.89,3.1,28,6,5,Drama,7.5,4.6,4.75,Fail
+51,25,Male,Biotechnology,7,88.54,13.6,38,38,0,Music,6.4,1.0,3.68,Pass
+52,29,Female,Computer-Science,4,96.28,11.9,28,90,10,Debate,7.0,2.7,1.1,Fail
+53,17,Female,Civil-Engineering,2,61.54,4.8,23,6,2,Drama,4.4,10.5,4.11,Fail
+54,20,Male,Business-Administration,4,46.38,10.1,34,91,4,Drama,13.7,11.5,5.5,Pass
+55,26,Male,Civil-Engineering,8,99.79,4.2,7,26,10,Drama,0.8,6.7,6.93,Fail
+56,23,Male,Mechanical-Engineering,1,24.32,8.9,18,59,10,Dance,13.7,12.5,3.35,Fail
+57,20,Female,Mechanical-Engineering,3,13.94,9.0,5,2,9,Sports,3.1,7.5,8.32,Pass
+58,26,Female,Mechanical-Engineering,1,41.78,4.5,7,38,0,Robotics Club,5.4,13.2,4.64,Pass
+59,30,Female,Mechanical-Engineering,3,89.22,6.7,9,75,9,Volunteer Work,12.8,14.7,5.41,Pass
+60,29,Male,Biotechnology,8,28.69,4.2,10,88,9,Debate,8.6,6.4,8.97,Fail
+61,28,Male,Mechanical-Engineering,7,18.37,6.7,23,73,0,Sports,0.1,4.4,8.8,Fail
+62,25,Female,Computer-Science,7,69.61,1.3,12,30,7,Music,9.5,12.0,4.76,Pass
+63,21,Female,Business-Administration,8,61.34,12.5,19,81,5,Drama,9.3,9.6,7.35,Fail
+64,17,Male,Electrical-Engineering,3,70.6,12.6,26,98,5,Debate,2.2,5.2,7.83,Fail
+65,20,Male,Mechanical-Engineering,6,59.2,7.5,28,87,0,Dance,5.7,6.0,2.29,Fail
+66,20,Female,Computer-Science,5,58.46,6.7,2,38,8,Sports,8.8,11.2,9.38,Pass
+67,22,Female,Computer-Science,3,62.5,7.4,28,10,0,Dance,2.1,0.4,5.13,Fail
+68,19,Female,Business-Administration,7,1.26,8.3,11,92,7,Dance,6.8,6.0,3.45,Pass
+69,25,Female,Computer-Science,1,60.68,7.1,9,20,6,Dance,9.4,0.6,9.99,Pass
+70,20,Female,Mechanical-Engineering,4,20.37,6.9,38,19,4,Dance,4.7,13.7,4.26,Fail
+71,26,Male,Civil-Engineering,2,31.18,13.5,35,21,8,Music,13.6,3.0,6.38,Fail
+72,23,Female,Computer-Science,8,93.12,10.1,40,58,7,Music,9.9,14.1,2.02,Pass
+73,17,Male,Biotechnology,3,86.09,11.3,35,21,7,Music,7.4,10.2,4.68,Pass
+74,19,Male,Business-Administration,8,28.62,6.6,36,73,0,Debate,12.0,14.3,0.79,Fail
+75,21,Female,Biotechnology,1,58.87,14.5,15,19,5,Dance,3.6,0.2,1.19,Pass
+76,28,Female,Mechanical-Engineering,3,87.83,3.0,22,31,10,Volunteer Work,2.9,15.1,2.12,Pass
+77,19,Female,Electrical-Engineering,7,93.45,3.3,19,52,0,Debate,7.0,6.3,7.56,Pass
+78,24,Female,Civil-Engineering,1,49.56,8.1,15,36,1,Sports,13.7,1.5,1.07,Fail
+79,21,Female,Computer-Science,1,2.58,15.9,11,34,3,Debate,2.0,4.6,7.01,Pass
+80,22,Male,Mechanical-Engineering,3,11.57,12.8,37,41,2,Music,8.1,7.7,3.96,Pass
+81,20,Female,Biotechnology,3,24.74,2.8,32,67,5,Robotics Club,7.8,9.2,7.46,Pass
+82,22,Male,Electrical-Engineering,7,69.29,12.4,2,33,4,Volunteer Work,8.5,6.9,1.41,Pass
+83,28,Female,Computer-Science,5,71.96,14.3,33,94,4,Sports,6.2,2.4,3.14,Fail
+84,25,Male,Biotechnology,3,67.49,7.8,22,27,9,Robotics Club,13.4,15.5,9.2,Pass
+85,28,Female,Computer-Science,7,2.88,15.6,40,61,8,Debate,9.0,3.6,0.45,Fail
+86,21,Female,Business-Administration,4,99.64,4.5,10,51,7,Dance,2.4,13.8,7.6,Pass
+87,23,Male,Computer-Science,5,80.22,3.3,39,69,1,Robotics Club,9.5,2.4,0.12,Fail
+88,19,Female,Mechanical-Engineering,1,71.78,10.5,8,16,2,Robotics Club,10.1,0.3,7.95,Fail
+89,23,Female,Mechanical-Engineering,4,54.75,6.1,12,26,2,Music,5.9,13.5,9.61,Pass
+90,28,Male,Business-Administration,8,2.53,6.5,23,72,7,Dance,0.2,3.4,9.58,Pass
+91,23,Female,Mechanical-Engineering,8,22.18,11.3,20,89,10,Volunteer Work,5.2,15.9,2.27,Fail
+92,18,Male,Biotechnology,3,13.17,2.2,8,91,1,Debate,0.2,11.0,1.27,Pass
+93,22,Male,Computer-Science,6,46.96,15.6,8,65,9,Drama,7.2,2.4,5.67,Fail
+94,18,Female,Electrical-Engineering,6,85.66,7.8,16,98,0,Drama,10.2,2.2,4.06,Fail
+95,21,Male,Computer-Science,1,53.87,15.8,25,87,3,Sports,1.9,10.3,7.16,Pass
+96,29,Male,Electrical-Engineering,4,26.4,5.7,25,93,7,Robotics Club,6.6,10.1,9.78,Pass
+97,18,Female,Electrical-Engineering,1,56.37,13.8,8,69,10,Volunteer Work,8.8,2.1,5.53,Pass
+98,30,Male,Biotechnology,1,22.0,10.0,37,10,5,Drama,3.6,6.9,6.39,Fail
+99,27,Female,Biotechnology,8,31.19,13.2,22,13,3,Music,12.0,6.4,7.93,Pass
+100,18,Female,Mechanical-Engineering,2,97.69,10.1,32,59,6,Robotics Club,2.7,4.8,1.29,Fail
+101,24,Male,Biotechnology,6,1.78,15.5,22,100,5,Volunteer Work,5.1,11.5,6.21,Pass
+102,27,Female,Business-Administration,4,36.63,4.8,29,39,2,Drama,7.6,6.5,6.93,Fail
+103,17,Male,Mechanical-Engineering,4,20.61,11.1,30,8,8,Robotics Club,0.1,11.2,5.94,Pass
+104,30,Male,Computer-Science,5,98.8,15.8,7,37,5,Volunteer Work,13.8,3.9,3.03,Pass
+105,22,Male,Computer-Science,8,94.97,1.0,12,59,0,Sports,3.3,6.0,5.97,Fail
+106,23,Male,Business-Administration,7,33.69,7.7,8,91,2,Volunteer Work,12.4,8.9,9.35,Fail
+107,29,Male,Civil-Engineering,2,37.22,2.3,7,14,3,Robotics Club,11.7,4.4,5.7,Fail
+108,30,Male,Mechanical-Engineering,8,69.05,12.1,5,12,2,Debate,7.7,0.9,7.94,Fail
+109,28,Female,Electrical-Engineering,7,0.06,1.3,3,59,5,Robotics Club,4.1,6.0,7.2,Fail
+110,30,Female,Computer-Science,7,45.69,8.2,8,91,2,Robotics Club,2.9,10.4,6.09,Fail
+111,22,Male,Electrical-Engineering,3,63.91,12.8,21,46,0,Sports,9.4,7.9,3.15,Pass
+112,19,Male,Electrical-Engineering,2,40.01,0.1,4,23,3,Debate,9.6,12.4,4.04,Fail
+113,20,Male,Civil-Engineering,4,6.44,7.5,13,81,9,Music,13.6,1.3,9.33,Fail
+114,21,Male,Biotechnology,8,71.18,14.2,39,46,7,Music,11.2,3.4,5.09,Pass
+115,18,Male,Computer-Science,3,15.22,13.5,10,6,6,Debate,4.2,7.7,7.32,Fail
+116,22,Female,Civil-Engineering,2,6.63,2.3,40,43,7,Drama,2.4,13.7,3.67,Pass
+117,18,Female,Mechanical-Engineering,8,45.83,2.9,22,54,2,Volunteer Work,6.3,12.8,9.47,Pass
+118,27,Female,Mechanical-Engineering,7,65.85,5.9,27,83,7,Volunteer Work,1.0,9.0,4.78,Fail
+119,27,Female,Computer-Science,7,76.69,15.5,5,14,7,Debate,4.3,0.4,8.73,Fail
+120,19,Male,Civil-Engineering,4,17.17,8.4,20,76,2,Robotics Club,1.2,7.2,4.03,Pass
+121,17,Male,Electrical-Engineering,8,68.0,2.1,12,84,2,Debate,5.4,3.8,0.89,Fail
+122,26,Male,Business-Administration,5,16.85,14.1,7,45,3,Drama,13.3,14.1,4.68,Pass
+123,25,Male,Business-Administration,2,18.58,14.4,14,22,3,Dance,2.4,14.4,4.39,Fail
+124,27,Male,Civil-Engineering,6,14.04,12.8,26,30,1,Volunteer Work,1.6,4.2,0.24,Fail
+125,28,Male,Mechanical-Engineering,4,29.22,2.7,14,73,5,Drama,9.1,9.7,9.57,Pass
+126,25,Female,Civil-Engineering,7,13.09,11.5,33,13,6,Dance,4.1,4.7,0.14,Pass
+127,27,Female,Business-Administration,4,22.86,7.3,6,57,4,Volunteer Work,9.1,12.7,5.94,Pass
+128,27,Male,Biotechnology,2,34.53,2.0,30,74,7,Drama,4.8,5.8,9.61,Fail
+129,24,Male,Computer-Science,4,62.34,8.7,7,60,2,Sports,5.5,14.2,1.42,Fail
+130,23,Male,Mechanical-Engineering,5,80.21,12.3,37,4,10,Dance,0.9,3.2,7.83,Fail
+131,23,Female,Computer-Science,6,46.19,2.7,15,71,1,Sports,10.0,10.7,5.81,Pass
+132,25,Male,Computer-Science,4,94.72,11.2,27,64,7,Debate,8.6,9.6,2.98,Fail
+133,23,Male,Electrical-Engineering,5,55.92,4.7,36,67,1,Sports,1.9,2.1,0.8,Pass
+134,20,Female,Business-Administration,2,20.42,2.9,14,55,7,Sports,0.3,5.0,2.71,Fail
+135,28,Male,Electrical-Engineering,2,65.31,9.6,28,50,4,Volunteer Work,1.4,3.2,1.98,Fail
+136,30,Male,Civil-Engineering,5,21.36,5.9,11,58,10,Music,12.7,15.7,2.33,Fail
+137,29,Male,Biotechnology,2,46.17,7.0,5,53,1,Drama,4.9,13.4,0.84,Fail
+138,23,Female,Business-Administration,6,73.02,2.6,23,13,5,Sports,6.0,15.6,8.6,Fail
+139,29,Female,Electrical-Engineering,3,44.28,6.7,4,75,8,Music,6.6,12.8,9.85,Fail
+140,22,Female,Mechanical-Engineering,4,10.8,14.5,5,78,5,Music,12.8,8.4,3.26,Pass
+141,28,Female,Computer-Science,2,27.74,3.0,6,67,1,Robotics Club,2.5,13.7,6.25,Fail
+142,29,Female,Civil-Engineering,7,60.33,0.2,36,14,8,Debate,5.7,12.7,9.95,Fail
+143,29,Male,Computer-Science,3,62.62,4.6,8,99,10,Music,5.9,14.5,0.57,Fail
+144,20,Male,Civil-Engineering,6,99.59,3.4,34,3,10,Drama,10.3,14.4,4.18,Pass
+145,17,Male,Civil-Engineering,2,83.52,6.8,13,51,2,Volunteer Work,6.1,10.7,4.61,Pass
+146,30,Female,Biotechnology,8,75.8,14.7,21,23,7,Robotics Club,11.7,4.1,9.3,Pass
+147,27,Female,Mechanical-Engineering,3,20.66,7.2,27,82,6,Music,9.0,7.5,6.92,Fail
+148,30,Male,Computer-Science,3,40.7,9.1,10,36,7,Debate,9.6,9.0,5.89,Pass
+149,24,Male,Business-Administration,1,9.31,15.5,21,3,4,Sports,9.9,0.3,0.61,Pass
+150,25,Male,Mechanical-Engineering,4,79.01,9.8,18,68,2,Music,3.3,14.0,0.5,Pass
+151,29,Male,Computer-Science,7,73.05,5.4,32,55,6,Music,12.5,4.9,5.11,Fail
+152,17,Male,Electrical-Engineering,1,23.97,14.3,11,100,6,Robotics Club,10.4,1.0,5.29,Pass
+153,28,Male,Electrical-Engineering,1,15.94,10.5,32,5,8,Sports,3.6,14.1,3.34,Fail
+154,24,Male,Biotechnology,6,71.48,9.7,21,13,4,Drama,6.9,3.1,5.29,Pass
+155,17,Male,Computer-Science,5,30.0,8.9,32,51,5,Volunteer Work,4.8,9.2,6.22,Fail
+156,29,Female,Computer-Science,6,30.87,12.7,2,68,1,Volunteer Work,13.0,4.5,4.45,Pass
+157,24,Male,Electrical-Engineering,6,53.56,15.8,26,87,10,Dance,11.0,9.0,0.44,Fail
+158,20,Male,Biotechnology,5,34.24,15.0,31,8,10,Sports,4.6,0.0,1.02,Pass
+159,27,Female,Electrical-Engineering,1,65.91,1.2,5,70,8,Robotics Club,8.1,14.9,9.87,Fail
+160,23,Male,Mechanical-Engineering,1,62.04,14.4,3,63,4,Debate,8.2,11.8,2.41,Pass
+161,18,Female,Business-Administration,4,54.57,5.1,10,20,4,Volunteer Work,5.0,14.4,4.17,Fail
+162,23,Male,Electrical-Engineering,6,68.79,14.8,6,99,6,Dance,12.0,5.3,9.39,Pass
+163,23,Male,Biotechnology,5,33.81,9.2,16,19,0,Drama,10.4,5.4,3.45,Pass
+164,23,Male,Business-Administration,1,47.45,1.2,28,12,1,Debate,12.7,10.2,0.9,Fail
+165,17,Female,Business-Administration,8,53.82,9.0,40,51,7,Drama,12.7,5.0,1.93,Pass
+166,17,Male,Civil-Engineering,5,74.1,7.7,17,52,2,Volunteer Work,5.0,12.7,9.05,Fail
+167,30,Female,Civil-Engineering,8,54.04,1.5,16,72,2,Robotics Club,7.2,6.1,5.32,Pass
+168,20,Female,Mechanical-Engineering,3,5.11,10.0,5,41,3,Dance,11.2,0.5,6.21,Fail
+169,21,Male,Business-Administration,6,42.79,9.4,26,53,7,Robotics Club,5.8,10.2,5.52,Pass
+170,17,Female,Mechanical-Engineering,2,76.93,12.3,17,98,5,Debate,2.9,14.8,6.39,Fail
+171,22,Male,Civil-Engineering,6,95.51,8.9,19,60,2,Debate,7.9,5.8,0.36,Fail
+172,25,Female,Biotechnology,2,62.65,8.6,15,53,10,Dance,3.6,11.5,7.97,Pass
+173,19,Male,Mechanical-Engineering,2,80.01,15.3,9,8,4,Robotics Club,9.3,13.4,5.07,Pass
+174,27,Male,Electrical-Engineering,5,46.35,0.9,35,49,1,Volunteer Work,14.0,13.6,1.9,Fail
+175,21,Female,Electrical-Engineering,5,72.76,8.7,31,61,9,Robotics Club,12.2,7.2,1.77,Pass
+176,30,Female,Biotechnology,5,24.41,6.2,7,15,5,Debate,14.0,0.9,3.93,Fail
+177,26,Female,Civil-Engineering,8,42.85,0.8,19,91,3,Volunteer Work,5.9,2.0,7.74,Pass
+178,26,Male,Civil-Engineering,8,27.67,3.8,1,53,0,Robotics Club,2.2,6.7,0.56,Fail
+179,26,Male,Computer-Science,5,7.04,12.2,29,9,3,Drama,2.7,0.9,7.32,Pass
+180,27,Female,Mechanical-Engineering,8,20.9,8.5,13,31,7,Drama,6.4,5.1,8.86,Fail
+181,27,Male,Civil-Engineering,3,79.97,8.1,33,46,5,Debate,7.0,15.7,0.64,Fail
+182,23,Female,Biotechnology,2,40.32,6.1,24,47,4,Volunteer Work,8.8,15.8,7.62,Pass
+183,29,Male,Civil-Engineering,8,40.5,0.6,23,6,2,Volunteer Work,1.2,5.7,2.38,Pass
+184,19,Male,Electrical-Engineering,1,24.73,13.6,17,50,1,Sports,2.4,9.0,3.52,Pass
+185,17,Male,Electrical-Engineering,8,17.74,4.9,24,5,6,Drama,2.3,9.0,8.05,Pass
+186,26,Female,Civil-Engineering,6,63.2,4.7,5,58,10,Sports,6.7,2.6,8.86,Pass
+187,27,Female,Computer-Science,3,94.97,13.8,39,95,7,Robotics Club,0.5,10.6,0.43,Pass
+188,29,Female,Civil-Engineering,5,88.41,13.7,32,5,2,Sports,8.0,6.4,3.36,Pass
+189,30,Male,Computer-Science,2,30.14,12.5,0,8,7,Robotics Club,10.4,11.7,7.57,Pass
+190,21,Female,Biotechnology,7,80.61,6.3,40,39,9,Drama,12.7,15.4,4.55,Fail
+191,24,Male,Mechanical-Engineering,7,33.08,3.8,19,58,8,Robotics Club,6.6,0.4,0.24,Fail
+192,29,Female,Electrical-Engineering,1,88.04,0.8,38,99,1,Robotics Club,5.0,14.4,4.37,Pass
+193,18,Female,Business-Administration,7,98.05,6.6,10,29,2,Drama,0.6,12.4,0.79,Pass
+194,23,Male,Computer-Science,2,60.82,14.2,20,86,8,Volunteer Work,11.7,12.9,1.26,Pass
+195,28,Male,Mechanical-Engineering,8,6.92,6.6,23,46,8,Dance,8.3,4.6,5.26,Pass
+196,18,Female,Business-Administration,5,22.33,8.3,0,74,5,Music,11.5,4.1,1.75,Fail
+197,18,Male,Computer-Science,4,22.9,14.2,2,44,7,Music,10.1,13.0,8.06,Pass
+198,17,Female,Business-Administration,3,95.67,10.7,35,55,6,Music,0.1,4.0,1.98,Fail
+199,19,Male,Computer-Science,8,61.86,11.0,24,59,10,Dance,4.8,8.9,7.51,Fail
+200,25,Female,Computer-Science,7,83.18,0.9,5,61,4,Dance,7.7,3.4,5.84,Fail
+201,26,Female,Electrical-Engineering,6,63.71,14.5,29,83,4,Drama,8.0,13.5,1.76,Fail
+202,19,Female,Mechanical-Engineering,1,81.87,14.9,29,85,1,Robotics Club,10.6,8.0,6.78,Fail
+203,20,Male,Business-Administration,6,26.05,11.0,38,4,4,Debate,5.1,5.3,2.15,Fail
+204,24,Male,Civil-Engineering,3,84.47,2.5,26,68,10,Dance,1.5,0.4,7.5,Pass
+205,24,Male,Civil-Engineering,1,44.73,2.7,35,34,7,Dance,4.4,16.0,3.48,Pass
+206,17,Male,Electrical-Engineering,6,14.86,5.7,21,19,4,Robotics Club,8.1,15.9,9.86,Pass
+207,22,Male,Mechanical-Engineering,3,57.6,5.0,38,26,8,Sports,0.8,3.8,9.59,Pass
+208,29,Female,Biotechnology,2,89.49,8.3,5,58,7,Debate,1.4,3.2,8.91,Fail
+209,25,Female,Electrical-Engineering,1,94.19,4.6,35,56,9,Debate,3.3,2.5,9.4,Pass
+210,20,Male,Computer-Science,3,46.59,4.9,30,11,2,Volunteer Work,13.3,6.7,4.77,Pass
+211,22,Male,Biotechnology,1,15.19,9.1,35,84,7,Music,0.2,14.0,1.1,Fail
+212,19,Female,Computer-Science,4,84.63,14.1,31,90,9,Music,10.2,7.6,9.01,Pass
+213,29,Male,Civil-Engineering,7,82.98,0.4,29,39,9,Debate,9.0,8.4,7.76,Pass
+214,28,Male,Mechanical-Engineering,2,4.92,5.2,9,13,0,Sports,9.4,5.4,7.78,Pass
+215,19,Male,Business-Administration,3,48.01,8.5,8,85,0,Robotics Club,3.6,3.0,5.51,Pass
+216,28,Male,Computer-Science,3,10.3,1.5,21,0,4,Debate,12.7,15.8,3.06,Fail
+217,24,Female,Electrical-Engineering,5,52.75,14.0,35,78,10,Volunteer Work,12.4,11.4,0.29,Pass
+218,22,Male,Mechanical-Engineering,5,53.33,1.1,15,89,5,Music,0.3,4.5,0.78,Pass
+219,29,Female,Biotechnology,4,44.76,11.7,7,23,7,Volunteer Work,9.8,10.9,8.48,Fail
+220,18,Male,Computer-Science,6,50.11,0.2,6,61,2,Debate,8.5,9.4,1.56,Pass
+221,23,Male,Civil-Engineering,5,33.84,9.0,14,54,10,Debate,2.3,12.8,9.99,Pass
+222,17,Male,Mechanical-Engineering,6,59.46,7.9,13,2,9,Sports,1.3,15.4,9.58,Fail
+223,28,Male,Civil-Engineering,2,34.64,6.2,25,20,4,Robotics Club,13.8,4.5,2.47,Fail
+224,19,Female,Biotechnology,8,92.39,7.4,8,83,10,Music,11.9,8.3,4.63,Fail
+225,20,Female,Mechanical-Engineering,7,2.67,8.5,27,77,6,Debate,2.8,5.6,2.8,Pass
+226,24,Female,Civil-Engineering,1,2.65,5.4,17,88,10,Robotics Club,1.9,6.9,7.79,Pass
+227,26,Male,Civil-Engineering,2,59.44,0.9,28,58,4,Drama,0.6,2.0,4.53,Pass
+228,22,Male,Mechanical-Engineering,6,24.3,15.1,27,39,7,Dance,9.1,6.2,2.63,Fail
+229,26,Female,Electrical-Engineering,7,53.52,2.5,30,70,9,Robotics Club,5.6,2.0,9.61,Pass
+230,21,Female,Business-Administration,1,99.25,5.4,22,19,3,Volunteer Work,12.8,1.6,2.33,Pass
+231,27,Female,Electrical-Engineering,4,14.65,12.3,20,63,8,Music,7.3,14.9,0.88,Fail
+232,24,Female,Biotechnology,4,77.26,13.1,15,36,7,Volunteer Work,9.0,11.9,8.96,Fail
+233,25,Male,Computer-Science,7,79.15,1.1,8,52,1,Volunteer Work,6.3,10.2,2.82,Fail
+234,22,Male,Biotechnology,4,24.21,0.7,1,5,6,Debate,0.1,14.6,1.79,Fail
+235,29,Female,Business-Administration,4,86.94,11.6,20,57,10,Music,13.7,6.0,9.54,Fail
+236,22,Female,Computer-Science,8,79.64,7.3,19,18,3,Music,2.2,6.1,2.72,Fail
+237,17,Female,Electrical-Engineering,6,69.18,5.9,30,57,4,Music,9.6,13.4,3.84,Pass
+238,17,Male,Business-Administration,2,1.92,0.4,20,60,7,Dance,1.6,2.1,3.06,Pass
+239,28,Male,Electrical-Engineering,2,85.54,4.7,5,5,7,Volunteer Work,10.4,8.5,5.04,Pass
+240,21,Female,Business-Administration,2,20.99,0.4,28,30,9,Dance,9.4,10.8,9.19,Fail
+241,24,Male,Mechanical-Engineering,2,67.36,2.7,2,22,6,Dance,11.1,3.3,3.96,Fail
+242,25,Female,Electrical-Engineering,2,40.47,3.5,33,31,3,Volunteer Work,4.6,6.9,5.46,Fail
+243,29,Male,Mechanical-Engineering,5,73.64,12.7,27,18,5,Debate,12.5,1.1,6.29,Fail
+244,21,Male,Computer-Science,2,57.66,13.7,19,5,9,Robotics Club,3.2,8.9,3.73,Pass
+245,18,Male,Computer-Science,5,69.82,11.5,13,73,6,Sports,0.9,8.6,7.08,Pass
+246,25,Male,Mechanical-Engineering,3,86.3,15.9,2,6,0,Volunteer Work,8.0,5.9,0.03,Fail
+247,22,Male,Mechanical-Engineering,8,58.43,4.7,35,78,1,Robotics Club,12.6,7.2,8.35,Pass
+248,29,Female,Business-Administration,2,51.86,12.8,34,29,5,Debate,3.1,1.5,6.83,Pass
+249,22,Female,Biotechnology,2,48.46,2.5,32,32,7,Robotics Club,10.1,0.2,4.25,Fail
+250,26,Female,Business-Administration,1,66.84,3.6,12,51,0,Drama,6.8,13.3,9.71,Pass
+251,27,Female,Mechanical-Engineering,3,62.28,11.8,26,89,6,Dance,0.8,5.1,0.66,Fail
+252,25,Male,Civil-Engineering,4,60.9,2.9,16,18,0,Volunteer Work,6.8,12.6,8.76,Fail
+253,17,Female,Business-Administration,5,1.33,11.8,12,50,3,Robotics Club,2.1,7.3,2.61,Fail
+254,21,Male,Civil-Engineering,6,54.51,5.3,31,34,5,Sports,5.1,2.5,4.98,Pass
+255,24,Female,Biotechnology,7,21.45,7.7,37,81,8,Drama,3.0,5.5,7.94,Fail
+256,25,Female,Computer-Science,3,79.55,15.0,9,31,3,Music,11.0,3.4,4.03,Fail
+257,30,Female,Mechanical-Engineering,3,22.96,11.4,34,61,4,Drama,7.0,9.9,0.46,Pass
+258,23,Male,Electrical-Engineering,8,28.13,3.7,4,46,0,Debate,4.5,9.4,2.77,Fail
+259,23,Female,Business-Administration,5,49.85,5.0,19,47,5,Volunteer Work,13.7,13.3,1.57,Fail
+260,26,Male,Electrical-Engineering,6,21.35,4.3,20,52,1,Drama,1.2,7.4,6.86,Pass
+261,19,Male,Biotechnology,1,84.54,12.2,38,37,8,Dance,2.2,7.4,0.53,Pass
+262,26,Female,Mechanical-Engineering,6,56.72,2.4,30,12,5,Music,7.9,11.7,3.89,Pass
+263,30,Male,Mechanical-Engineering,3,98.27,3.8,14,76,10,Volunteer Work,4.0,1.2,3.3,Pass
+264,19,Male,Electrical-Engineering,6,50.01,14.0,7,82,4,Debate,10.8,6.6,0.13,Pass
+265,30,Male,Business-Administration,3,12.86,14.9,20,80,1,Debate,2.8,9.6,0.54,Fail
+266,18,Male,Computer-Science,5,83.71,4.1,18,36,4,Drama,0.9,3.5,7.86,Pass
+267,25,Female,Business-Administration,3,28.89,15.0,26,60,1,Sports,9.2,7.3,1.99,Pass
+268,24,Male,Business-Administration,5,58.09,6.4,36,93,8,Debate,1.3,8.4,8.23,Pass
+269,26,Female,Civil-Engineering,2,41.04,4.1,5,71,3,Drama,13.0,11.5,6.77,Pass
+270,24,Male,Business-Administration,5,86.54,8.2,39,62,7,Drama,10.9,10.8,1.2,Fail
+271,23,Female,Business-Administration,7,3.51,13.3,9,7,2,Dance,10.7,4.0,1.42,Fail
+272,21,Female,Mechanical-Engineering,5,10.84,8.8,28,3,7,Volunteer Work,11.7,13.2,4.41,Fail
+273,23,Male,Biotechnology,3,46.19,4.5,7,20,2,Volunteer Work,10.7,4.0,3.79,Fail
+274,17,Male,Civil-Engineering,1,8.47,12.8,11,5,8,Sports,0.8,15.5,3.01,Fail
+275,22,Male,Electrical-Engineering,2,3.55,15.8,25,32,1,Drama,7.4,11.7,6.21,Pass
+276,28,Male,Business-Administration,1,58.76,14.4,14,87,3,Robotics Club,11.1,9.6,8.13,Fail
+277,20,Male,Computer-Science,6,19.6,15.7,15,10,7,Robotics Club,12.3,14.1,5.15,Fail
+278,24,Male,Civil-Engineering,6,84.53,4.9,6,71,0,Debate,5.4,2.1,2.37,Fail
+279,28,Female,Computer-Science,2,54.76,14.3,9,44,4,Robotics Club,6.3,4.5,6.71,Pass
+280,26,Female,Computer-Science,3,34.97,11.2,20,26,3,Dance,11.3,12.8,9.1,Fail
+281,17,Female,Business-Administration,6,58.27,3.0,16,50,10,Volunteer Work,2.8,7.6,0.05,Fail
+282,24,Male,Civil-Engineering,7,32.47,13.5,30,54,6,Music,3.8,7.7,4.6,Fail
+283,18,Male,Computer-Science,1,5.9,2.5,16,69,2,Robotics Club,6.1,5.3,2.55,Fail
+284,20,Male,Computer-Science,4,94.58,14.3,19,67,0,Debate,2.6,9.5,3.63,Fail
+285,22,Female,Computer-Science,1,30.28,14.8,28,47,2,Drama,8.7,5.6,1.15,Pass
+286,23,Male,Biotechnology,4,37.31,10.4,8,87,5,Sports,6.8,5.7,1.25,Pass
+287,18,Male,Computer-Science,1,11.9,0.9,26,41,3,Music,10.7,9.5,6.51,Pass
+288,19,Female,Civil-Engineering,4,7.73,11.5,36,32,9,Drama,13.2,13.7,6.05,Pass
+289,27,Female,Computer-Science,1,54.15,11.8,30,16,10,Debate,4.1,0.1,2.69,Fail
+290,24,Female,Civil-Engineering,6,14.48,3.9,25,94,10,Debate,5.6,6.5,4.27,Pass
+291,25,Female,Biotechnology,8,90.43,10.5,25,65,1,Debate,6.7,9.5,6.46,Pass
+292,21,Female,Mechanical-Engineering,1,21.23,12.2,9,81,6,Debate,0.7,14.0,5.73,Pass
+293,27,Female,Mechanical-Engineering,5,49.35,0.8,29,86,6,Debate,10.2,5.8,9.03,Pass
+294,17,Male,Business-Administration,6,38.51,11.3,2,22,5,Drama,1.4,7.8,8.95,Pass
+295,30,Female,Civil-Engineering,3,78.79,12.6,35,34,0,Volunteer Work,2.5,9.9,0.68,Fail
+296,27,Male,Civil-Engineering,2,15.19,14.9,20,29,2,Music,7.8,9.7,4.47,Fail
+297,26,Male,Civil-Engineering,7,17.08,9.1,39,98,5,Sports,12.9,12.1,3.85,Pass
+298,18,Male,Civil-Engineering,6,1.46,11.0,18,57,6,Sports,9.6,15.9,1.44,Pass
+299,30,Female,Biotechnology,1,16.01,3.5,8,33,3,Dance,11.1,13.3,0.79,Fail
+300,19,Female,Civil-Engineering,8,70.85,0.3,38,84,3,Music,3.8,10.0,1.13,Pass
+301,19,Male,Biotechnology,7,9.66,4.8,13,1,6,Robotics Club,11.2,1.3,9.06,Pass
+302,17,Female,Electrical-Engineering,4,47.04,13.9,0,63,6,Robotics Club,13.0,1.2,0.95,Pass
+303,22,Female,Electrical-Engineering,7,58.85,6.2,11,64,0,Volunteer Work,8.0,2.3,0.1,Fail
+304,22,Female,Mechanical-Engineering,3,67.83,6.3,4,18,7,Dance,7.2,11.8,4.36,Fail
+305,29,Male,Civil-Engineering,3,48.86,10.5,32,89,5,Dance,1.1,7.2,7.06,Fail
+306,30,Female,Business-Administration,7,32.54,9.2,35,42,1,Debate,3.9,1.3,5.32,Fail
+307,19,Female,Business-Administration,8,40.98,3.2,29,72,9,Drama,13.1,14.2,3.66,Pass
+308,19,Male,Biotechnology,4,63.92,9.3,2,4,4,Dance,1.6,15.3,0.53,Pass
+309,18,Male,Mechanical-Engineering,8,14.55,3.3,13,89,1,Dance,3.1,11.0,8.37,Pass
+310,17,Male,Electrical-Engineering,8,62.21,12.2,7,31,10,Debate,9.1,15.0,9.86,Fail
+311,30,Female,Business-Administration,8,88.72,14.9,7,12,8,Drama,5.1,10.8,5.5,Fail
+312,29,Female,Civil-Engineering,7,66.56,9.0,21,59,2,Sports,8.2,14.4,8.44,Pass
+313,19,Female,Biotechnology,5,52.39,5.9,38,18,9,Debate,4.4,14.3,9.86,Pass
+314,19,Male,Biotechnology,7,34.94,0.8,15,41,2,Dance,0.3,1.5,0.32,Pass
+315,25,Male,Mechanical-Engineering,6,64.55,6.2,13,19,3,Music,0.5,1.2,0.72,Fail
+316,26,Male,Civil-Engineering,1,73.34,7.3,11,89,7,Debate,12.3,12.7,1.5,Pass
+317,25,Male,Business-Administration,7,23.46,3.3,1,43,6,Music,9.5,7.1,6.4,Fail
+318,29,Male,Civil-Engineering,7,85.32,10.2,8,80,7,Volunteer Work,11.5,0.8,5.22,Pass
+319,26,Female,Business-Administration,2,52.32,5.6,26,73,0,Sports,6.4,12.9,8.94,Fail
+320,21,Female,Electrical-Engineering,6,39.13,3.3,18,23,5,Music,12.8,1.9,3.58,Fail
+321,28,Male,Mechanical-Engineering,7,73.07,11.9,33,83,8,Drama,10.5,10.0,3.29,Pass
+322,26,Female,Civil-Engineering,8,8.99,3.1,18,78,5,Sports,9.4,8.1,9.55,Pass
+323,17,Female,Business-Administration,5,3.23,3.6,27,11,0,Robotics Club,4.1,12.5,9.25,Pass
+324,30,Male,Biotechnology,8,77.39,10.4,36,97,6,Volunteer Work,0.6,9.4,2.13,Pass
+325,29,Female,Electrical-Engineering,2,60.51,10.6,24,14,10,Sports,11.3,15.7,8.05,Pass
+326,21,Female,Electrical-Engineering,3,16.9,13.7,18,6,6,Robotics Club,1.0,10.0,7.06,Pass
+327,19,Male,Business-Administration,3,37.89,7.1,20,81,5,Drama,1.5,3.2,5.21,Fail
+328,25,Female,Biotechnology,5,9.71,4.3,10,84,7,Robotics Club,6.8,14.4,5.27,Pass
+329,28,Female,Electrical-Engineering,3,7.08,5.4,5,24,3,Robotics Club,12.8,1.6,9.6,Fail
+330,23,Male,Computer-Science,4,31.58,3.0,3,79,2,Sports,8.6,15.3,1.97,Pass
+331,25,Male,Computer-Science,2,48.81,4.5,24,55,5,Drama,13.7,9.1,1.56,Pass
+332,30,Female,Biotechnology,2,74.31,15.8,21,25,5,Dance,12.4,1.4,5.43,Fail
+333,29,Female,Business-Administration,4,12.6,0.9,39,26,1,Debate,12.0,15.2,4.71,Fail
+334,20,Male,Mechanical-Engineering,5,78.29,4.5,34,47,0,Music,2.0,3.6,1.99,Pass
+335,30,Male,Electrical-Engineering,7,45.42,6.0,27,36,9,Drama,1.9,7.8,3.88,Pass
+336,23,Male,Business-Administration,7,17.98,9.8,38,41,4,Dance,2.1,4.5,8.44,Fail
+337,29,Male,Computer-Science,1,26.03,0.9,4,80,4,Debate,2.1,5.2,2.38,Pass
+338,26,Female,Mechanical-Engineering,6,18.55,6.0,17,79,8,Debate,13.3,1.6,9.4,Fail
+339,23,Female,Civil-Engineering,8,4.42,10.9,24,65,9,Drama,0.8,4.4,4.17,Pass
+340,18,Female,Biotechnology,3,26.07,10.1,30,89,7,Drama,10.4,1.8,4.44,Fail
+341,22,Female,Electrical-Engineering,4,97.95,13.9,25,22,1,Drama,4.2,11.4,7.48,Pass
+342,29,Female,Business-Administration,3,56.0,3.5,39,26,5,Dance,2.5,4.4,1.29,Fail
+343,20,Female,Civil-Engineering,8,9.26,5.8,18,2,2,Debate,13.6,4.2,7.44,Pass
+344,27,Male,Mechanical-Engineering,7,20.32,2.3,19,64,7,Volunteer Work,6.5,6.2,2.13,Pass
+345,22,Female,Biotechnology,6,22.36,8.6,5,48,6,Music,10.0,2.2,9.99,Fail
+346,18,Male,Civil-Engineering,7,66.34,4.4,19,74,9,Sports,1.3,7.0,0.65,Fail
+347,17,Male,Civil-Engineering,6,16.78,6.5,28,58,3,Volunteer Work,11.3,3.0,2.61,Fail
+348,17,Male,Mechanical-Engineering,1,98.21,5.8,38,39,9,Drama,0.2,12.4,3.36,Pass
+349,30,Female,Civil-Engineering,5,94.71,15.1,14,94,0,Sports,10.7,7.7,4.13,Pass
+350,18,Male,Business-Administration,3,38.69,7.2,4,50,5,Drama,3.6,15.9,9.28,Pass
+351,26,Female,Business-Administration,1,28.38,5.4,15,33,5,Music,3.6,0.6,9.88,Pass
+352,28,Female,Business-Administration,6,88.54,0.0,38,88,2,Drama,1.5,4.8,9.13,Fail
+353,30,Male,Mechanical-Engineering,2,94.09,7.6,22,94,4,Sports,3.1,0.8,5.04,Pass
+354,20,Female,Business-Administration,4,45.73,15.3,36,75,1,Dance,11.1,15.7,9.66,Fail
+355,23,Male,Biotechnology,4,40.96,2.0,13,47,10,Drama,12.9,3.3,2.1,Fail
+356,23,Male,Mechanical-Engineering,6,40.99,11.7,1,43,10,Drama,0.0,15.4,9.42,Fail
+357,20,Female,Civil-Engineering,5,75.62,4.7,9,15,10,Volunteer Work,8.9,14.7,5.66,Pass
+358,27,Female,Computer-Science,8,0.42,0.9,15,95,10,Volunteer Work,12.4,2.9,0.41,Pass
+359,26,Female,Biotechnology,3,29.36,5.2,31,77,6,Debate,8.5,10.2,9.72,Pass
+360,19,Male,Civil-Engineering,3,22.92,0.9,13,91,10,Volunteer Work,14.0,0.8,4.19,Fail
+361,28,Female,Electrical-Engineering,7,20.54,0.7,29,79,3,Robotics Club,3.2,12.4,4.79,Pass
+362,30,Female,Biotechnology,8,77.59,1.7,17,74,6,Volunteer Work,2.6,12.7,0.18,Pass
+363,18,Male,Electrical-Engineering,7,17.56,16.0,40,48,4,Volunteer Work,6.7,2.1,0.84,Pass
+364,18,Male,Biotechnology,4,75.62,13.0,38,25,4,Volunteer Work,6.9,5.1,5.43,Pass
+365,21,Male,Mechanical-Engineering,1,30.73,15.3,1,38,9,Dance,9.3,4.4,3.5,Fail
+366,20,Male,Mechanical-Engineering,6,31.44,7.0,13,6,0,Robotics Club,4.4,6.8,9.91,Pass
+367,30,Female,Electrical-Engineering,8,75.77,9.0,16,0,3,Drama,0.2,2.5,1.13,Pass
+368,28,Male,Civil-Engineering,4,66.44,6.8,6,67,1,Music,8.8,5.9,6.07,Pass
+369,30,Male,Civil-Engineering,6,68.79,10.7,17,13,10,Music,3.9,0.9,6.08,Fail
+370,20,Male,Mechanical-Engineering,4,51.15,0.4,23,97,6,Drama,7.8,6.5,5.12,Fail
+371,27,Female,Civil-Engineering,3,72.56,5.6,16,48,4,Dance,0.4,15.7,2.82,Fail
+372,30,Female,Civil-Engineering,6,5.26,3.2,27,13,10,Dance,6.3,6.8,1.95,Pass
+373,28,Male,Computer-Science,1,93.71,7.7,13,14,3,Robotics Club,5.2,6.6,1.61,Fail
+374,29,Female,Business-Administration,1,64.31,4.7,12,90,3,Debate,7.3,4.4,5.02,Fail
+375,20,Female,Electrical-Engineering,1,13.73,7.3,31,87,7,Volunteer Work,8.4,2.3,7.9,Pass
+376,29,Male,Mechanical-Engineering,8,2.38,10.6,9,62,1,Robotics Club,7.9,10.4,7.93,Pass
+377,23,Male,Mechanical-Engineering,3,18.97,11.9,4,72,10,Music,0.6,3.1,4.43,Fail
+378,22,Male,Business-Administration,5,52.46,12.2,29,70,5,Volunteer Work,11.4,2.4,5.83,Fail
+379,20,Female,Civil-Engineering,2,57.08,6.7,22,91,8,Dance,2.6,15.4,0.34,Fail
+380,17,Female,Electrical-Engineering,7,54.43,8.3,31,86,0,Dance,4.5,8.6,4.48,Pass
+381,20,Male,Biotechnology,7,72.23,8.9,33,66,3,Debate,13.4,1.1,7.0,Fail
+382,21,Female,Civil-Engineering,3,64.5,8.8,10,7,5,Robotics Club,0.7,3.4,6.46,Fail
+383,20,Male,Biotechnology,6,55.24,0.9,27,48,4,Music,6.9,12.4,2.75,Pass
+384,17,Male,Business-Administration,1,87.23,14.9,21,99,9,Drama,8.6,8.5,6.18,Pass
+385,29,Male,Computer-Science,6,22.46,13.4,22,63,1,Music,9.3,9.1,9.35,Fail
+386,18,Male,Business-Administration,3,67.9,13.3,15,31,8,Volunteer Work,9.8,8.0,9.52,Fail
+387,17,Female,Electrical-Engineering,6,5.04,11.8,14,94,10,Volunteer Work,11.8,1.0,7.41,Pass
+388,23,Female,Business-Administration,2,66.13,2.2,24,84,4,Volunteer Work,10.9,10.1,0.1,Fail
+389,28,Male,Electrical-Engineering,7,87.55,9.1,7,66,0,Music,4.7,3.1,0.98,Fail
+390,30,Female,Biotechnology,8,25.43,8.3,40,39,6,Sports,6.9,12.7,3.28,Fail
+391,27,Male,Civil-Engineering,8,49.04,3.4,8,37,7,Music,1.6,6.2,0.51,Pass
+392,24,Female,Electrical-Engineering,4,42.98,14.4,18,62,3,Debate,4.1,13.4,1.74,Pass
+393,17,Female,Computer-Science,3,99.52,9.4,2,13,7,Dance,0.8,12.2,4.71,Pass
+394,26,Female,Computer-Science,2,13.17,3.7,24,65,10,Robotics Club,2.2,7.2,5.32,Fail
+395,23,Male,Computer-Science,7,35.84,1.9,15,54,3,Music,11.3,15.6,5.12,Fail
+396,30,Female,Biotechnology,5,17.43,5.4,5,41,10,Drama,13.4,15.7,3.52,Fail
+397,26,Female,Biotechnology,4,11.15,2.8,1,29,2,Music,2.8,3.4,2.25,Pass
+398,24,Male,Electrical-Engineering,3,89.55,6.1,35,76,2,Music,1.6,15.8,2.9,Fail
+399,28,Male,Mechanical-Engineering,8,16.05,15.4,26,62,2,Drama,3.0,6.8,9.75,Fail
+400,28,Male,Mechanical-Engineering,6,44.67,5.9,10,74,2,Volunteer Work,0.7,10.8,4.95,Pass
+401,25,Female,Business-Administration,2,97.09,11.5,35,38,3,Volunteer Work,12.2,0.2,1.61,Fail
+402,27,Female,Mechanical-Engineering,2,87.53,8.6,8,22,4,Music,3.6,9.1,1.31,Pass
+403,17,Female,Electrical-Engineering,5,93.64,14.9,20,65,0,Sports,6.0,12.8,1.86,Pass
+404,27,Male,Biotechnology,3,50.56,3.7,36,89,7,Music,6.2,5.8,7.03,Fail
+405,22,Male,Business-Administration,3,40.34,1.3,38,41,9,Drama,10.0,2.9,0.18,Pass
+406,28,Female,Electrical-Engineering,3,8.9,8.2,26,31,3,Drama,12.6,13.2,0.7,Fail
+407,17,Male,Biotechnology,1,38.67,5.9,24,41,0,Drama,4.3,14.9,7.88,Pass
+408,18,Male,Computer-Science,8,82.92,4.5,4,51,2,Dance,0.6,14.9,4.0,Fail
+409,18,Female,Computer-Science,7,73.07,13.3,22,56,9,Sports,10.9,14.0,2.0,Pass
+410,19,Female,Mechanical-Engineering,2,45.28,1.5,16,67,6,Music,4.8,11.9,9.89,Pass
+411,22,Female,Computer-Science,7,57.65,6.9,29,37,4,Dance,13.3,10.2,3.06,Fail
+412,29,Male,Business-Administration,4,26.0,11.1,27,47,0,Drama,11.6,8.9,1.51,Fail
+413,17,Male,Electrical-Engineering,5,84.24,12.7,17,43,10,Drama,6.8,12.2,3.15,Pass
+414,30,Female,Electrical-Engineering,5,62.91,9.5,34,20,1,Robotics Club,2.4,7.2,3.39,Fail
+415,20,Female,Electrical-Engineering,6,28.49,14.6,33,81,6,Debate,3.9,2.7,5.57,Fail
+416,28,Female,Electrical-Engineering,8,26.2,2.9,23,23,7,Debate,6.0,12.8,2.77,Fail
+417,17,Female,Business-Administration,7,91.08,2.3,40,24,1,Dance,6.7,14.5,7.76,Pass
+418,27,Female,Computer-Science,7,39.3,6.1,0,95,7,Dance,5.5,5.0,8.85,Fail
+419,27,Female,Mechanical-Engineering,4,7.73,8.0,10,53,5,Drama,8.6,4.5,7.45,Pass
+420,18,Male,Civil-Engineering,4,49.16,12.5,15,33,5,Drama,5.1,13.1,6.06,Fail
+421,26,Female,Mechanical-Engineering,5,2.38,4.0,7,5,1,Sports,1.3,3.5,1.68,Fail
+422,17,Male,Business-Administration,5,66.65,7.4,13,34,9,Music,0.6,13.3,4.58,Pass
+423,23,Female,Civil-Engineering,7,74.93,5.5,20,84,5,Sports,12.9,9.1,5.14,Fail
+424,30,Male,Civil-Engineering,1,36.86,12.7,40,88,10,Volunteer Work,7.3,11.5,9.84,Pass
+425,18,Female,Computer-Science,8,71.39,13.1,10,75,5,Robotics Club,10.2,3.8,8.8,Pass
+426,24,Male,Biotechnology,7,92.32,13.4,13,84,10,Dance,12.3,1.7,2.83,Pass
+427,25,Male,Business-Administration,7,91.46,15.5,33,66,1,Dance,3.7,5.3,9.8,Fail
+428,23,Female,Computer-Science,7,99.44,5.7,36,46,7,Drama,0.3,10.3,8.48,Pass
+429,25,Male,Business-Administration,6,98.83,6.3,8,78,6,Sports,12.9,9.2,0.06,Pass
+430,18,Male,Electrical-Engineering,3,73.5,6.7,12,69,5,Drama,0.8,3.9,4.73,Pass
+431,18,Female,Civil-Engineering,5,91.21,0.6,25,45,7,Debate,7.0,8.9,9.87,Pass
+432,24,Female,Civil-Engineering,5,5.54,0.1,37,54,2,Drama,12.3,5.2,0.58,Pass
+433,30,Male,Electrical-Engineering,8,52.65,12.1,1,29,9,Volunteer Work,3.4,6.9,6.41,Pass
+434,18,Female,Computer-Science,8,28.72,1.4,34,46,9,Robotics Club,7.9,0.9,1.85,Fail
+435,24,Female,Business-Administration,2,22.19,10.9,38,8,0,Sports,13.5,4.6,8.16,Pass
+436,28,Female,Mechanical-Engineering,3,58.81,8.4,22,99,7,Debate,10.7,13.1,3.33,Pass
+437,29,Male,Civil-Engineering,3,11.52,7.4,31,80,6,Robotics Club,7.5,12.2,7.9,Fail
+438,27,Female,Civil-Engineering,3,50.74,1.1,20,13,5,Robotics Club,0.1,2.5,5.84,Fail
+439,30,Female,Civil-Engineering,4,51.08,13.1,38,29,0,Dance,0.8,2.1,2.88,Pass
+440,18,Male,Business-Administration,3,24.8,15.2,15,26,7,Sports,4.6,2.1,6.14,Fail
+441,24,Male,Business-Administration,4,73.25,6.0,24,37,1,Music,4.1,1.6,4.51,Pass
+442,30,Male,Civil-Engineering,1,53.14,15.4,5,74,1,Robotics Club,9.4,4.5,4.87,Fail
+443,19,Male,Biotechnology,3,68.12,9.7,20,66,1,Volunteer Work,0.2,2.1,0.67,Pass
+444,27,Male,Mechanical-Engineering,1,68.69,0.3,3,74,7,Sports,1.5,4.4,4.22,Fail
+445,22,Female,Biotechnology,4,19.12,2.8,24,39,2,Drama,10.3,15.9,5.87,Pass
+446,22,Male,Computer-Science,4,3.97,14.2,39,99,2,Volunteer Work,6.2,4.7,6.07,Fail
+447,25,Male,Business-Administration,3,1.22,15.7,8,58,6,Drama,8.7,4.6,2.75,Pass
+448,25,Male,Electrical-Engineering,2,33.52,11.3,0,75,9,Sports,7.8,5.9,5.64,Pass
+449,24,Male,Business-Administration,4,73.08,1.0,4,100,3,Robotics Club,1.6,1.7,2.93,Pass
+450,25,Male,Civil-Engineering,8,90.9,15.4,22,70,3,Sports,10.7,9.7,8.22,Fail
+451,27,Female,Computer-Science,8,53.32,8.8,33,32,2,Drama,12.1,2.4,9.92,Pass
+452,30,Female,Computer-Science,6,25.8,5.4,0,71,5,Sports,10.6,8.0,5.28,Pass
+453,27,Female,Mechanical-Engineering,3,90.43,2.8,10,80,0,Drama,4.2,7.0,9.83,Pass
+454,19,Male,Computer-Science,6,54.55,0.8,29,8,5,Robotics Club,1.0,10.5,6.28,Fail
+455,28,Male,Computer-Science,5,81.77,6.5,36,15,8,Dance,2.5,11.2,6.42,Pass
+456,23,Female,Biotechnology,6,71.79,7.7,40,10,6,Sports,10.5,12.9,3.02,Fail
+457,19,Female,Biotechnology,3,54.87,7.5,34,35,4,Volunteer Work,8.5,15.8,2.61,Pass
+458,29,Female,Biotechnology,3,68.53,7.8,26,11,2,Debate,12.8,2.2,5.99,Fail
+459,30,Male,Electrical-Engineering,4,29.34,13.6,7,24,7,Dance,13.5,9.0,3.76,Pass
+460,30,Male,Civil-Engineering,2,64.54,2.1,27,63,2,Music,4.4,15.5,4.06,Fail
+461,20,Female,Computer-Science,6,58.57,0.3,37,68,6,Sports,13.7,10.6,9.36,Pass
+462,20,Male,Biotechnology,2,20.84,13.8,20,78,7,Robotics Club,1.8,12.0,9.89,Fail
+463,30,Male,Electrical-Engineering,5,71.14,15.1,16,53,8,Robotics Club,10.3,11.6,8.0,Pass
+464,20,Female,Business-Administration,3,77.45,14.2,29,7,3,Volunteer Work,0.3,15.2,1.75,Pass
+465,27,Female,Electrical-Engineering,7,22.59,3.6,39,63,0,Debate,7.3,2.1,2.62,Fail
+466,20,Male,Computer-Science,5,25.5,9.9,31,79,10,Dance,13.5,2.2,8.98,Fail
+467,29,Female,Biotechnology,4,68.86,13.6,26,48,7,Sports,11.2,12.0,7.31,Fail
+468,23,Female,Biotechnology,6,51.14,11.0,37,75,3,Robotics Club,0.0,14.6,9.8,Fail
+469,19,Male,Computer-Science,2,84.83,10.6,40,62,5,Music,2.3,9.6,3.9,Pass
+470,27,Male,Mechanical-Engineering,6,25.64,2.4,36,85,5,Sports,3.3,1.5,8.24,Fail
+471,20,Male,Electrical-Engineering,6,4.64,1.6,4,6,6,Music,2.2,12.8,4.94,Fail
+472,22,Male,Electrical-Engineering,6,91.14,2.1,14,86,7,Sports,1.6,0.3,4.27,Fail
+473,22,Male,Business-Administration,8,12.95,1.7,29,74,6,Music,7.1,10.6,5.89,Fail
+474,20,Female,Computer-Science,2,72.09,7.2,25,7,7,Sports,4.2,4.6,2.07,Pass
+475,19,Female,Mechanical-Engineering,1,22.17,12.6,26,93,8,Sports,2.5,4.4,1.75,Pass
+476,27,Male,Mechanical-Engineering,7,59.59,12.8,14,1,6,Sports,8.0,10.1,6.9,Pass
+477,22,Male,Civil-Engineering,7,74.42,6.4,38,45,0,Robotics Club,10.0,4.0,6.38,Pass
+478,27,Female,Mechanical-Engineering,5,32.14,14.5,17,83,10,Robotics Club,1.0,2.7,7.56,Pass
+479,26,Female,Computer-Science,7,55.85,10.8,13,99,7,Sports,11.5,3.8,1.04,Pass
+480,18,Male,Business-Administration,5,82.27,9.3,39,63,2,Drama,1.9,8.4,4.55,Pass
+481,27,Female,Computer-Science,5,81.38,11.0,16,43,10,Robotics Club,7.6,11.8,1.6,Pass
+482,29,Male,Electrical-Engineering,6,14.17,10.1,12,26,10,Volunteer Work,0.8,0.6,6.68,Fail
+483,28,Male,Mechanical-Engineering,8,30.76,13.8,39,36,2,Debate,12.7,8.6,9.35,Pass
+484,20,Female,Biotechnology,8,41.4,15.9,9,42,8,Robotics Club,0.7,1.4,9.0,Pass
+485,28,Male,Mechanical-Engineering,1,75.49,12.5,17,78,7,Dance,1.6,0.8,1.2,Fail
+486,17,Male,Civil-Engineering,1,12.68,1.9,32,74,4,Drama,13.2,5.2,8.72,Pass
+487,20,Male,Mechanical-Engineering,7,36.08,6.7,27,6,2,Dance,12.2,1.1,4.76,Pass
+488,27,Male,Civil-Engineering,4,90.22,14.8,20,13,0,Drama,8.6,3.1,5.41,Pass
+489,26,Female,Computer-Science,3,93.83,7.2,7,64,8,Debate,4.1,7.3,2.13,Pass
+490,22,Female,Biotechnology,8,44.73,3.5,28,99,3,Robotics Club,13.1,7.1,3.82,Fail
+491,26,Female,Mechanical-Engineering,6,21.4,13.8,5,17,7,Debate,13.9,0.0,7.37,Pass
+492,24,Male,Computer-Science,4,98.65,15.5,24,68,4,Sports,3.1,8.2,4.34,Fail
+493,23,Male,Electrical-Engineering,3,53.19,8.1,4,6,5,Debate,13.9,9.3,3.89,Fail
+494,18,Male,Civil-Engineering,2,76.27,9.7,7,56,2,Debate,3.6,5.3,5.88,Pass
+495,19,Female,Business-Administration,4,47.68,14.0,37,90,0,Dance,12.5,13.3,9.55,Pass
+496,30,Female,Business-Administration,1,92.49,3.3,22,16,1,Dance,12.6,9.6,9.76,Fail
+497,30,Male,Civil-Engineering,8,98.06,3.2,15,14,7,Robotics Club,0.1,11.0,5.93,Pass
+498,20,Female,Business-Administration,5,9.87,8.0,28,71,6,Dance,4.4,12.5,9.28,Pass
+499,24,Male,Business-Administration,1,58.48,14.6,1,65,6,Music,8.8,1.5,5.34,Fail
+500,25,Female,Civil-Engineering,4,76.55,12.5,15,87,8,Debate,12.1,3.4,3.55,Pass
+501,27,Female,Computer-Science,5,15.32,12.6,17,89,2,Volunteer Work,11.0,11.1,7.7,Fail
+502,21,Male,Computer-Science,7,14.5,4.3,33,50,1,Sports,10.5,15.1,8.57,Pass
+503,20,Male,Mechanical-Engineering,6,40.02,1.5,39,59,8,Debate,12.6,4.9,7.62,Pass
+504,24,Female,Business-Administration,8,90.5,2.5,23,44,6,Volunteer Work,7.3,3.5,6.49,Fail
+505,25,Male,Mechanical-Engineering,8,93.22,14.3,7,61,6,Debate,13.6,3.3,1.63,Pass
+506,20,Female,Electrical-Engineering,2,79.22,6.1,5,79,8,Drama,10.1,1.4,7.51,Fail
+507,22,Male,Computer-Science,2,72.3,12.0,7,7,9,Sports,3.3,8.7,5.63,Fail
+508,28,Male,Civil-Engineering,5,84.82,6.1,4,12,6,Sports,1.0,7.7,0.43,Fail
+509,27,Female,Mechanical-Engineering,6,64.67,12.6,0,6,5,Drama,5.3,6.1,5.81,Fail
+510,17,Male,Electrical-Engineering,5,53.15,8.7,19,61,8,Dance,6.3,16.0,7.64,Fail
+511,24,Female,Business-Administration,7,97.07,4.2,14,23,8,Debate,1.2,2.2,3.14,Pass
+512,25,Male,Mechanical-Engineering,3,78.9,3.1,28,4,8,Robotics Club,10.2,14.8,4.87,Fail
+513,20,Female,Electrical-Engineering,1,26.28,4.3,30,14,3,Music,9.5,11.8,5.78,Fail
+514,27,Female,Computer-Science,8,4.25,5.9,23,70,3,Debate,9.8,11.7,9.37,Pass
+515,28,Female,Mechanical-Engineering,5,78.27,6.4,16,52,3,Sports,0.1,9.5,6.82,Fail
+516,19,Male,Civil-Engineering,5,69.71,0.1,25,57,1,Dance,2.1,14.5,2.52,Pass
+517,21,Male,Electrical-Engineering,2,41.5,0.9,12,42,3,Dance,0.4,5.0,8.29,Pass
+518,26,Male,Civil-Engineering,2,74.64,7.8,34,84,9,Dance,0.5,1.2,4.82,Fail
+519,26,Female,Civil-Engineering,2,69.0,1.6,2,71,10,Dance,3.8,6.2,3.43,Fail
+520,19,Male,Electrical-Engineering,4,65.18,5.7,40,12,9,Debate,14.0,9.4,3.87,Pass
+521,28,Male,Civil-Engineering,6,26.84,8.4,29,52,3,Volunteer Work,14.0,5.3,5.48,Pass
+522,21,Male,Biotechnology,6,28.28,5.4,28,66,5,Music,7.9,11.4,0.94,Fail
+523,29,Male,Civil-Engineering,2,67.38,6.5,33,15,1,Robotics Club,9.8,5.8,9.56,Fail
+524,20,Female,Mechanical-Engineering,7,81.25,10.5,29,4,9,Robotics Club,7.6,1.0,4.39,Fail
+525,21,Male,Business-Administration,1,79.63,3.3,16,21,6,Volunteer Work,4.0,0.2,8.24,Fail
+526,25,Male,Mechanical-Engineering,5,46.17,4.4,5,23,10,Dance,5.0,0.2,2.76,Fail
+527,20,Male,Civil-Engineering,6,23.83,0.4,1,73,1,Dance,13.2,8.9,3.51,Fail
+528,26,Male,Civil-Engineering,7,29.53,14.5,16,100,7,Robotics Club,4.0,7.5,2.67,Pass
+529,28,Male,Computer-Science,5,63.14,5.5,15,98,9,Debate,13.1,5.1,6.51,Pass
+530,19,Male,Mechanical-Engineering,2,90.53,4.1,37,11,0,Drama,5.3,2.8,5.35,Pass
+531,20,Male,Biotechnology,8,75.45,6.6,21,58,5,Dance,10.9,5.5,7.2,Fail
+532,22,Male,Electrical-Engineering,2,47.78,6.2,38,100,0,Music,0.3,13.9,8.86,Pass
+533,27,Male,Electrical-Engineering,7,27.24,0.0,40,97,4,Debate,2.2,6.3,5.94,Fail
+534,28,Male,Electrical-Engineering,7,10.22,2.7,28,37,3,Dance,0.2,11.4,1.0,Pass
+535,22,Male,Biotechnology,6,80.75,4.9,21,60,4,Dance,12.3,6.7,2.32,Pass
+536,23,Female,Business-Administration,8,24.06,12.1,7,47,7,Sports,3.2,12.8,3.88,Fail
+537,30,Female,Civil-Engineering,2,29.72,15.8,5,98,5,Sports,5.1,5.0,8.55,Fail
+538,30,Female,Business-Administration,1,27.61,13.6,40,15,6,Robotics Club,10.5,13.4,6.63,Pass
+539,17,Male,Civil-Engineering,4,68.72,6.4,36,32,3,Music,12.0,4.4,8.34,Pass
+540,20,Female,Computer-Science,7,8.01,7.1,36,6,3,Robotics Club,2.7,6.0,0.16,Fail
+541,20,Male,Biotechnology,5,64.21,2.4,15,38,7,Debate,3.8,12.9,5.34,Fail
+542,22,Male,Computer-Science,1,85.42,5.4,1,2,9,Volunteer Work,1.3,13.2,2.03,Fail
+543,24,Female,Electrical-Engineering,6,82.1,1.7,3,86,3,Robotics Club,5.3,15.6,8.15,Fail
+544,24,Female,Civil-Engineering,1,5.62,9.7,28,6,2,Drama,5.4,9.8,1.06,Fail
+545,17,Male,Biotechnology,6,7.64,8.5,6,14,9,Sports,6.2,5.2,9.16,Fail
+546,21,Female,Mechanical-Engineering,6,53.72,3.1,40,23,6,Debate,3.0,10.2,3.94,Pass
+547,23,Female,Electrical-Engineering,5,8.22,14.0,34,11,6,Dance,9.5,11.0,0.59,Pass
+548,22,Male,Mechanical-Engineering,8,92.17,1.0,10,53,8,Dance,2.5,6.2,2.19,Fail
+549,19,Male,Electrical-Engineering,2,23.92,11.1,29,49,8,Debate,5.5,2.8,6.67,Pass
+550,17,Female,Business-Administration,5,53.3,12.0,38,20,8,Robotics Club,10.9,9.4,5.3,Fail
+551,23,Male,Biotechnology,5,56.92,10.9,35,79,8,Volunteer Work,13.1,2.0,2.08,Fail
+552,29,Male,Electrical-Engineering,3,20.27,10.4,29,64,2,Drama,11.8,14.5,0.63,Fail
+553,18,Female,Biotechnology,5,77.24,7.7,21,86,10,Volunteer Work,2.6,0.8,6.6,Fail
+554,17,Female,Civil-Engineering,4,63.44,1.6,16,79,3,Debate,5.5,10.4,8.37,Pass
+555,24,Male,Computer-Science,6,16.29,2.1,31,28,8,Volunteer Work,4.9,15.1,6.3,Pass
+556,24,Male,Mechanical-Engineering,5,57.63,7.7,11,40,7,Robotics Club,13.9,6.1,7.66,Pass
+557,23,Female,Mechanical-Engineering,6,13.49,13.8,16,27,6,Sports,6.6,14.2,9.84,Fail
+558,30,Male,Civil-Engineering,3,52.67,10.3,20,30,1,Sports,13.1,1.6,2.65,Pass
+559,29,Male,Civil-Engineering,8,42.44,14.8,29,67,7,Debate,7.9,0.4,2.07,Pass
+560,26,Male,Electrical-Engineering,5,2.69,9.5,36,82,0,Robotics Club,12.1,5.7,4.06,Pass
+561,29,Male,Civil-Engineering,1,43.09,15.2,40,61,6,Drama,2.2,15.8,0.04,Pass
+562,24,Female,Civil-Engineering,6,2.48,0.5,15,33,10,Sports,9.1,10.1,9.28,Fail
+563,23,Male,Mechanical-Engineering,3,68.66,7.0,12,4,1,Drama,11.6,1.1,8.58,Fail
+564,19,Female,Civil-Engineering,6,5.1,12.0,22,84,7,Sports,4.3,14.4,2.18,Fail
+565,17,Female,Civil-Engineering,2,30.4,13.9,0,19,7,Drama,0.1,14.9,6.57,Pass
+566,29,Male,Business-Administration,2,44.93,15.3,2,44,1,Drama,3.9,1.6,0.31,Fail
+567,23,Female,Electrical-Engineering,5,35.29,6.8,6,73,9,Robotics Club,10.9,5.6,3.71,Fail
+568,24,Female,Biotechnology,3,93.79,6.0,6,49,6,Sports,3.4,1.2,5.8,Pass
+569,17,Female,Computer-Science,7,58.68,3.7,36,14,9,Dance,0.7,11.5,9.1,Fail
+570,19,Male,Civil-Engineering,8,78.43,10.0,11,49,4,Music,8.9,9.7,0.25,Fail
+571,28,Male,Mechanical-Engineering,6,57.12,9.0,15,75,1,Debate,1.7,6.8,4.74,Fail
+572,25,Male,Mechanical-Engineering,8,64.33,5.7,22,94,4,Music,13.9,10.4,8.95,Fail
+573,19,Female,Mechanical-Engineering,2,6.96,15.3,19,27,3,Music,8.6,13.1,7.92,Fail
+574,30,Male,Electrical-Engineering,8,17.75,11.2,25,40,6,Music,6.5,6.5,0.27,Pass
+575,22,Male,Computer-Science,5,95.56,14.6,12,38,3,Sports,4.8,15.0,1.52,Fail
+576,27,Female,Mechanical-Engineering,8,86.02,6.3,10,59,5,Dance,11.7,15.3,6.14,Pass
+577,18,Female,Mechanical-Engineering,2,5.95,15.1,3,44,8,Dance,11.8,1.8,9.39,Pass
+578,24,Male,Electrical-Engineering,2,50.9,9.3,9,10,0,Robotics Club,10.7,3.7,5.87,Pass
+579,24,Female,Business-Administration,2,78.88,8.3,26,75,5,Sports,7.0,3.3,5.26,Pass
+580,27,Male,Electrical-Engineering,7,30.11,7.2,25,13,6,Music,3.9,13.2,7.66,Pass
+581,26,Female,Business-Administration,6,45.08,14.2,24,6,7,Dance,5.2,15.0,1.25,Pass
+582,17,Male,Biotechnology,7,88.73,3.4,29,60,6,Drama,7.3,0.5,4.02,Pass
+583,29,Female,Mechanical-Engineering,4,77.7,12.5,26,96,6,Drama,6.5,4.1,2.11,Fail
+584,25,Male,Biotechnology,8,11.73,1.1,32,5,9,Debate,2.1,6.6,6.23,Pass
+585,18,Male,Mechanical-Engineering,8,3.29,3.8,18,14,4,Debate,10.4,8.0,5.79,Fail
+586,28,Male,Mechanical-Engineering,2,88.26,4.3,30,51,10,Drama,12.1,7.4,9.3,Pass
+587,24,Male,Civil-Engineering,1,47.39,14.0,19,65,3,Music,11.9,11.3,3.54,Fail
+588,21,Female,Computer-Science,8,82.53,8.4,4,62,4,Music,2.4,14.8,2.38,Pass
+589,23,Male,Business-Administration,8,41.84,14.0,6,61,3,Debate,2.7,7.7,0.24,Pass
+590,22,Male,Electrical-Engineering,4,43.34,5.5,13,60,4,Dance,6.6,15.3,1.42,Pass
+591,18,Female,Business-Administration,1,1.78,2.5,32,71,8,Dance,8.9,8.9,9.9,Pass
+592,26,Female,Computer-Science,2,58.34,12.5,11,78,5,Drama,3.7,9.5,5.01,Pass
+593,18,Male,Biotechnology,6,11.59,9.6,32,30,4,Dance,10.7,9.5,0.22,Pass
+594,30,Male,Biotechnology,4,46.43,3.9,39,21,0,Music,9.9,2.0,0.25,Pass
+595,23,Female,Civil-Engineering,7,64.38,6.3,27,98,9,Music,12.9,14.9,6.45,Pass
+596,22,Male,Computer-Science,8,34.83,2.3,3,24,8,Drama,5.4,6.6,7.18,Fail
+597,26,Male,Mechanical-Engineering,4,83.39,5.0,36,12,10,Music,9.7,14.3,8.2,Fail
+598,19,Female,Business-Administration,1,89.13,1.1,9,28,0,Robotics Club,6.9,11.1,7.88,Pass
+599,28,Female,Mechanical-Engineering,8,99.29,15.5,22,34,7,Robotics Club,0.1,6.3,4.16,Fail
+600,23,Female,Civil-Engineering,2,21.62,15.2,22,15,7,Volunteer Work,13.6,12.3,3.75,Fail
+601,19,Female,Mechanical-Engineering,4,72.68,11.8,10,95,4,Volunteer Work,2.8,1.7,8.94,Fail
+602,26,Female,Biotechnology,3,95.09,1.9,34,89,3,Debate,4.9,2.9,8.39,Fail
+603,17,Male,Civil-Engineering,7,81.95,10.1,12,25,6,Drama,5.8,0.9,4.48,Pass
+604,25,Male,Business-Administration,4,90.4,9.5,30,65,1,Drama,3.6,14.8,8.2,Pass
+605,29,Male,Biotechnology,1,95.04,11.9,14,88,7,Robotics Club,10.7,5.6,4.98,Pass
+606,18,Male,Computer-Science,3,94.84,1.2,34,100,8,Dance,4.9,7.9,1.33,Fail
+607,18,Male,Business-Administration,3,33.42,13.7,10,54,4,Debate,2.4,6.2,2.17,Fail
+608,17,Female,Mechanical-Engineering,5,52.58,15.3,4,39,10,Drama,7.4,15.3,4.25,Fail
+609,17,Female,Civil-Engineering,3,25.46,16.0,17,88,9,Dance,1.4,5.6,9.2,Fail
+610,26,Female,Electrical-Engineering,1,54.19,9.2,4,12,4,Sports,4.1,14.6,1.21,Fail
+611,17,Female,Computer-Science,7,38.6,13.2,8,67,3,Dance,13.2,1.9,7.95,Pass
+612,17,Female,Business-Administration,7,93.16,7.8,21,35,7,Music,4.7,6.0,8.86,Pass
+613,27,Female,Electrical-Engineering,1,78.85,14.4,32,52,6,Volunteer Work,2.2,12.5,2.16,Pass
+614,25,Male,Computer-Science,8,87.21,11.5,39,80,10,Volunteer Work,8.9,12.1,4.76,Fail
+615,20,Female,Mechanical-Engineering,5,87.13,2.4,10,24,10,Robotics Club,7.3,3.5,4.72,Pass
+616,26,Female,Electrical-Engineering,6,74.98,1.8,10,7,1,Robotics Club,2.6,7.3,5.17,Fail
+617,18,Female,Computer-Science,6,9.71,12.2,32,26,1,Music,1.8,6.0,2.43,Fail
+618,27,Male,Civil-Engineering,1,82.01,11.8,20,10,3,Sports,4.1,13.3,2.79,Fail
+619,20,Male,Computer-Science,6,52.26,1.3,39,17,7,Drama,13.8,4.4,0.39,Pass
+620,27,Female,Mechanical-Engineering,6,54.56,13.3,34,44,6,Drama,3.8,3.3,9.28,Pass
+621,21,Female,Business-Administration,1,76.39,15.9,36,79,0,Robotics Club,11.7,9.1,1.44,Pass
+622,21,Male,Computer-Science,6,96.35,7.6,32,87,0,Drama,2.3,3.1,8.97,Pass
+623,22,Female,Mechanical-Engineering,8,75.44,6.2,32,80,3,Volunteer Work,9.6,4.1,7.18,Fail
+624,30,Female,Biotechnology,6,75.68,8.4,33,45,5,Dance,6.2,6.8,5.33,Pass
+625,23,Male,Mechanical-Engineering,4,89.03,11.1,28,90,6,Dance,1.8,7.1,4.45,Fail
+626,27,Male,Business-Administration,6,63.98,9.9,29,73,2,Sports,11.2,2.5,4.11,Fail
+627,27,Female,Civil-Engineering,5,30.61,4.1,21,74,10,Sports,2.5,9.2,5.95,Pass
+628,20,Female,Computer-Science,6,16.33,6.6,12,97,10,Drama,8.1,10.2,2.06,Fail
+629,17,Female,Mechanical-Engineering,1,80.77,10.4,24,12,9,Volunteer Work,0.1,6.2,3.16,Pass
+630,24,Male,Mechanical-Engineering,6,2.28,6.7,37,53,4,Debate,8.1,6.3,9.04,Pass
+631,27,Female,Computer-Science,4,65.43,6.6,33,33,8,Volunteer Work,9.1,9.6,1.22,Pass
+632,25,Male,Computer-Science,6,53.12,9.5,8,21,6,Drama,8.1,10.5,7.88,Pass
+633,24,Male,Mechanical-Engineering,3,32.85,13.6,10,84,4,Drama,6.3,2.7,7.55,Pass
+634,28,Male,Computer-Science,2,85.97,5.3,4,29,0,Music,5.7,11.4,2.66,Fail
+635,19,Male,Biotechnology,2,98.74,15.3,23,51,2,Music,0.1,6.3,5.17,Pass
+636,29,Female,Business-Administration,2,54.55,15.1,11,18,9,Volunteer Work,2.7,9.3,6.43,Pass
+637,18,Male,Computer-Science,2,96.33,2.8,37,83,5,Debate,7.7,6.4,5.84,Pass
+638,28,Female,Civil-Engineering,2,71.45,4.8,9,54,4,Drama,3.0,14.5,7.51,Fail
+639,24,Female,Electrical-Engineering,5,83.56,6.5,34,57,6,Volunteer Work,10.6,1.8,0.9,Fail
+640,28,Male,Civil-Engineering,6,78.67,15.1,20,29,1,Sports,8.5,5.5,7.61,Fail
+641,29,Female,Mechanical-Engineering,2,84.43,6.7,13,69,4,Music,5.6,6.6,1.34,Fail
+642,20,Male,Mechanical-Engineering,4,47.56,8.5,5,31,1,Music,3.9,10.2,8.21,Pass
+643,20,Male,Business-Administration,2,90.88,8.4,9,50,2,Drama,2.1,12.9,9.18,Fail
+644,19,Female,Electrical-Engineering,6,60.38,4.5,14,97,8,Debate,5.7,3.5,0.44,Fail
+645,19,Female,Civil-Engineering,8,47.93,10.9,39,78,7,Music,10.9,3.2,5.43,Pass
+646,27,Male,Business-Administration,4,94.33,7.5,11,1,10,Drama,13.0,14.5,1.52,Pass
+647,23,Male,Electrical-Engineering,8,51.92,6.6,6,30,0,Drama,9.6,8.1,1.32,Pass
+648,25,Female,Business-Administration,8,78.67,7.0,11,99,2,Robotics Club,12.1,9.9,0.98,Pass
+649,17,Male,Electrical-Engineering,7,62.55,0.1,8,94,8,Volunteer Work,13.5,12.6,5.89,Fail
+650,23,Female,Mechanical-Engineering,6,5.94,10.7,6,50,6,Volunteer Work,1.1,1.2,4.38,Fail
+651,26,Female,Electrical-Engineering,6,77.66,13.8,19,65,9,Drama,7.7,2.6,0.26,Pass
+652,24,Male,Biotechnology,4,12.42,7.0,33,15,3,Robotics Club,2.4,3.5,0.76,Fail
+653,24,Female,Business-Administration,4,37.1,9.5,3,93,3,Debate,7.2,0.8,5.49,Pass
+654,29,Female,Mechanical-Engineering,4,62.0,5.1,0,91,3,Robotics Club,0.3,11.5,6.99,Pass
+655,17,Female,Business-Administration,2,95.94,7.0,19,5,4,Music,4.2,1.3,8.18,Fail
+656,27,Female,Mechanical-Engineering,8,19.33,12.5,3,56,0,Sports,3.6,5.7,6.58,Fail
+657,20,Male,Civil-Engineering,3,18.11,13.3,23,87,2,Robotics Club,0.1,5.9,4.34,Fail
+658,25,Female,Civil-Engineering,7,3.9,0.3,4,80,1,Robotics Club,8.8,15.8,2.28,Fail
+659,17,Male,Computer-Science,7,11.42,9.2,29,15,1,Music,1.9,3.8,4.6,Pass
+660,26,Male,Electrical-Engineering,2,83.68,4.1,32,97,7,Volunteer Work,7.8,0.6,7.41,Pass
+661,20,Male,Biotechnology,7,44.58,7.4,27,25,3,Sports,4.4,7.9,1.49,Fail
+662,29,Male,Electrical-Engineering,1,39.37,15.1,37,46,3,Robotics Club,12.0,13.4,8.52,Pass
+663,21,Female,Biotechnology,8,15.69,1.8,31,11,1,Drama,2.1,13.0,7.66,Pass
+664,23,Male,Biotechnology,1,86.87,3.5,11,13,2,Volunteer Work,9.7,8.2,3.26,Pass
+665,17,Female,Mechanical-Engineering,5,21.5,6.5,37,68,3,Music,8.0,11.8,2.83,Pass
+666,20,Male,Business-Administration,4,64.51,2.1,9,19,2,Volunteer Work,7.7,8.4,4.27,Fail
+667,24,Male,Business-Administration,1,48.95,5.0,28,91,9,Music,6.9,2.4,5.52,Fail
+668,20,Female,Business-Administration,3,40.4,3.5,7,19,5,Dance,3.7,1.9,6.12,Fail
+669,25,Female,Electrical-Engineering,4,15.85,10.7,31,19,2,Volunteer Work,9.3,15.2,1.34,Pass
+670,24,Male,Computer-Science,5,81.95,3.0,20,88,6,Robotics Club,3.5,10.4,7.45,Fail
+671,18,Male,Civil-Engineering,1,28.82,0.3,14,37,6,Volunteer Work,5.1,9.0,7.71,Pass
+672,21,Male,Business-Administration,1,34.14,5.8,35,27,5,Volunteer Work,6.5,10.5,9.52,Fail
+673,26,Female,Civil-Engineering,5,11.85,13.7,14,83,7,Drama,8.6,1.1,2.12,Fail
+674,21,Male,Electrical-Engineering,2,60.14,12.3,16,48,6,Music,3.1,3.5,4.69,Pass
+675,23,Male,Computer-Science,5,31.56,14.4,28,65,1,Robotics Club,12.4,14.7,2.82,Fail
+676,20,Female,Business-Administration,8,94.42,5.2,0,51,1,Robotics Club,6.4,2.6,3.39,Pass
+677,22,Male,Computer-Science,5,29.07,14.8,39,92,5,Volunteer Work,5.1,12.7,1.26,Pass
+678,25,Female,Biotechnology,8,12.34,2.9,11,19,6,Debate,8.3,1.5,0.24,Pass
+679,19,Female,Electrical-Engineering,8,57.71,8.6,22,75,8,Volunteer Work,12.4,3.5,0.08,Pass
+680,23,Male,Business-Administration,8,53.78,7.4,27,72,2,Volunteer Work,4.9,7.6,7.89,Fail
+681,28,Male,Civil-Engineering,3,1.7,1.4,32,4,0,Music,8.1,1.4,8.59,Fail
+682,27,Female,Mechanical-Engineering,1,85.66,9.7,39,5,8,Robotics Club,11.8,12.7,1.76,Pass
+683,25,Female,Biotechnology,8,56.68,12.5,34,71,10,Sports,4.9,9.9,3.85,Pass
+684,26,Male,Biotechnology,2,51.72,0.2,40,94,4,Music,8.5,9.1,9.71,Pass
+685,20,Male,Civil-Engineering,8,65.27,7.4,25,30,6,Sports,2.8,9.5,5.81,Fail
+686,18,Male,Computer-Science,8,37.54,3.7,7,48,0,Dance,0.2,14.6,6.01,Fail
+687,22,Male,Electrical-Engineering,7,65.79,6.7,17,34,8,Sports,12.6,12.5,8.18,Fail
+688,17,Female,Business-Administration,5,85.78,8.2,8,40,5,Drama,4.4,10.1,6.79,Fail
+689,25,Male,Computer-Science,1,83.0,3.1,13,66,2,Volunteer Work,1.4,15.8,9.84,Pass
+690,29,Female,Civil-Engineering,5,13.81,4.2,30,91,3,Debate,6.0,3.5,0.99,Fail
+691,30,Female,Mechanical-Engineering,1,31.66,3.6,16,88,5,Dance,7.1,4.9,8.96,Fail
+692,23,Female,Civil-Engineering,4,14.8,0.3,4,80,9,Music,7.9,3.2,7.0,Pass
+693,24,Female,Civil-Engineering,4,65.92,12.4,28,70,9,Sports,13.8,5.0,4.06,Fail
+694,19,Female,Business-Administration,6,72.67,3.5,10,42,10,Debate,1.8,9.3,7.27,Fail
+695,30,Male,Electrical-Engineering,6,47.84,14.0,26,39,5,Sports,13.5,1.8,3.5,Fail
+696,25,Male,Business-Administration,4,63.04,7.4,22,84,7,Dance,13.2,5.8,3.89,Pass
+697,23,Female,Civil-Engineering,4,89.85,12.8,34,45,5,Dance,12.3,9.6,6.95,Fail
+698,30,Male,Civil-Engineering,1,78.1,9.4,28,12,5,Drama,13.5,0.0,8.74,Fail
+699,28,Male,Biotechnology,7,69.54,8.5,39,79,10,Debate,0.1,15.4,6.92,Fail
+700,26,Male,Civil-Engineering,8,66.86,12.2,6,93,5,Robotics Club,7.5,8.4,7.63,Fail
+701,17,Female,Biotechnology,4,41.21,1.7,13,14,1,Music,3.8,2.9,2.43,Pass
+702,22,Male,Civil-Engineering,7,49.6,3.0,3,35,10,Robotics Club,11.2,10.1,9.26,Fail
+703,22,Female,Civil-Engineering,4,43.55,5.1,15,27,10,Drama,9.0,2.4,5.25,Fail
+704,18,Male,Computer-Science,5,77.39,4.0,9,42,0,Debate,0.7,9.3,6.49,Pass
+705,23,Female,Mechanical-Engineering,5,15.58,13.4,14,46,0,Drama,12.1,10.7,0.4,Pass
+706,26,Female,Mechanical-Engineering,2,4.88,0.2,20,75,2,Dance,10.8,4.9,1.83,Fail
+707,28,Female,Business-Administration,8,5.45,12.3,7,14,9,Debate,8.4,6.0,4.99,Fail
+708,25,Male,Mechanical-Engineering,8,90.35,0.0,13,80,3,Volunteer Work,8.8,1.4,6.28,Fail
+709,23,Male,Electrical-Engineering,8,44.51,15.7,22,62,10,Dance,13.8,7.7,7.12,Fail
+710,29,Female,Computer-Science,1,62.0,9.6,3,15,3,Sports,6.7,13.7,6.4,Pass
+711,17,Male,Mechanical-Engineering,8,38.04,5.9,8,76,10,Volunteer Work,2.4,8.6,5.9,Pass
+712,19,Male,Electrical-Engineering,3,0.86,13.8,16,20,0,Drama,12.0,4.8,8.06,Pass
+713,17,Female,Mechanical-Engineering,2,96.9,3.6,16,90,0,Sports,0.5,15.7,2.66,Fail
+714,28,Female,Mechanical-Engineering,6,76.77,7.4,9,84,5,Debate,13.5,12.9,3.52,Pass
+715,25,Female,Civil-Engineering,2,99.6,7.4,13,12,8,Sports,6.9,13.5,6.79,Fail
+716,18,Male,Mechanical-Engineering,4,23.45,5.7,23,3,7,Sports,0.8,6.4,8.97,Pass
+717,30,Male,Electrical-Engineering,6,31.63,5.2,20,29,10,Drama,7.3,3.4,5.47,Pass
+718,23,Male,Biotechnology,8,41.26,1.4,37,91,7,Music,7.2,3.4,4.19,Pass
+719,20,Male,Civil-Engineering,6,73.36,13.9,13,36,1,Drama,4.8,3.3,9.7,Pass
+720,27,Female,Electrical-Engineering,1,53.87,5.6,24,82,4,Robotics Club,1.4,12.7,1.51,Fail
+721,28,Male,Business-Administration,3,44.64,14.1,1,10,5,Drama,1.4,4.9,0.07,Fail
+722,19,Male,Business-Administration,2,36.88,9.9,40,47,5,Dance,4.0,10.5,8.58,Pass
+723,20,Male,Business-Administration,5,27.67,14.4,9,39,3,Volunteer Work,0.0,5.4,8.95,Pass
+724,22,Female,Business-Administration,8,88.42,13.1,16,85,7,Volunteer Work,4.8,5.8,7.66,Pass
+725,18,Male,Electrical-Engineering,2,69.69,14.3,25,10,2,Debate,14.0,9.1,5.32,Pass
+726,22,Male,Civil-Engineering,5,37.27,1.0,37,82,0,Sports,7.6,8.4,0.89,Fail
+727,22,Male,Mechanical-Engineering,5,94.08,9.8,37,22,6,Sports,6.5,10.6,5.12,Fail
+728,18,Male,Computer-Science,8,23.06,3.3,26,91,5,Dance,0.7,7.9,9.11,Fail
+729,27,Female,Electrical-Engineering,8,78.96,10.3,16,40,4,Dance,9.4,2.6,6.08,Pass
+730,17,Female,Biotechnology,1,55.23,12.6,35,70,7,Robotics Club,11.2,10.6,1.06,Pass
+731,17,Female,Electrical-Engineering,2,72.51,15.8,35,45,0,Dance,4.5,15.3,1.65,Fail
+732,25,Male,Civil-Engineering,2,53.96,11.9,4,6,4,Music,9.6,15.4,7.28,Fail
+733,30,Female,Computer-Science,4,64.92,13.6,36,26,4,Music,7.8,0.2,5.62,Pass
+734,23,Male,Business-Administration,5,69.76,13.2,8,53,4,Debate,7.0,12.8,2.62,Pass
+735,18,Male,Biotechnology,3,25.88,8.4,31,11,4,Sports,8.4,14.1,7.53,Pass
+736,21,Male,Electrical-Engineering,5,66.98,9.1,18,59,8,Sports,10.3,2.6,8.1,Pass
+737,25,Female,Civil-Engineering,2,29.87,8.8,30,45,4,Dance,5.8,3.5,9.52,Fail
+738,20,Male,Business-Administration,4,45.9,4.2,6,78,0,Drama,11.9,5.1,6.11,Fail
+739,18,Male,Civil-Engineering,8,56.17,2.3,26,20,2,Dance,4.8,13.2,4.38,Pass
+740,29,Female,Biotechnology,1,60.78,1.5,17,43,9,Robotics Club,12.0,14.0,4.69,Pass
+741,17,Female,Electrical-Engineering,1,22.98,15.8,9,11,0,Debate,7.4,15.8,8.79,Pass
+742,23,Female,Civil-Engineering,5,49.18,10.7,19,10,4,Sports,3.7,9.9,5.32,Fail
+743,25,Female,Electrical-Engineering,5,10.57,3.3,5,99,6,Volunteer Work,10.3,1.7,4.59,Pass
+744,29,Male,Computer-Science,2,28.25,7.3,22,98,0,Debate,7.2,2.4,7.68,Fail
+745,18,Female,Electrical-Engineering,4,93.87,7.1,17,44,8,Drama,0.8,0.6,6.37,Fail
+746,28,Male,Business-Administration,4,29.5,12.7,5,81,0,Sports,6.4,2.6,4.33,Fail
+747,27,Female,Mechanical-Engineering,6,91.47,5.2,8,34,2,Drama,3.9,5.1,0.91,Fail
+748,26,Female,Electrical-Engineering,1,5.85,6.4,17,14,8,Drama,10.7,15.9,6.68,Fail
+749,26,Female,Electrical-Engineering,7,34.68,7.8,22,54,4,Music,5.7,8.9,7.09,Pass
+750,22,Female,Computer-Science,6,84.17,13.4,27,36,9,Sports,0.7,4.3,7.88,Fail
+751,27,Female,Electrical-Engineering,4,13.49,10.1,34,14,4,Robotics Club,3.8,10.6,4.93,Fail
+752,27,Male,Biotechnology,8,70.71,4.2,8,95,6,Volunteer Work,12.6,13.1,2.08,Pass
+753,18,Female,Civil-Engineering,4,56.1,7.9,31,77,6,Robotics Club,12.4,2.8,9.8,Fail
+754,20,Male,Biotechnology,1,20.26,0.8,23,81,6,Sports,2.3,15.2,9.68,Fail
+755,27,Female,Business-Administration,5,86.3,6.1,16,40,1,Robotics Club,3.1,13.8,8.01,Pass
+756,17,Male,Biotechnology,6,16.09,13.5,33,94,8,Dance,5.8,4.4,6.52,Pass
+757,30,Male,Civil-Engineering,1,53.52,10.6,4,59,7,Music,2.1,3.3,6.75,Pass
+758,26,Female,Civil-Engineering,4,22.85,11.2,21,81,9,Volunteer Work,1.8,2.4,6.04,Fail
+759,17,Male,Civil-Engineering,5,89.88,8.2,16,77,2,Drama,10.1,7.5,2.66,Fail
+760,23,Male,Mechanical-Engineering,7,73.6,3.0,31,95,2,Robotics Club,7.1,15.0,5.76,Fail
+761,30,Female,Business-Administration,8,69.88,11.3,22,95,1,Volunteer Work,10.9,7.0,5.96,Pass
+762,30,Female,Business-Administration,5,26.67,7.0,39,58,0,Drama,10.6,15.0,7.44,Pass
+763,23,Male,Biotechnology,6,16.28,10.0,23,48,0,Sports,11.9,0.6,8.68,Fail
+764,23,Male,Business-Administration,8,50.52,0.7,3,77,2,Dance,2.2,0.1,0.65,Pass
+765,29,Male,Civil-Engineering,2,84.5,2.7,38,15,5,Dance,10.7,11.1,4.6,Fail
+766,21,Female,Electrical-Engineering,4,47.39,2.5,18,76,7,Music,13.5,12.5,1.11,Fail
+767,28,Male,Business-Administration,7,46.96,13.3,30,5,7,Robotics Club,8.5,1.4,3.46,Fail
+768,21,Female,Mechanical-Engineering,6,52.69,1.2,16,36,2,Debate,12.3,14.5,2.95,Pass
+769,21,Female,Computer-Science,7,23.44,6.5,20,19,1,Drama,6.4,15.6,9.1,Fail
+770,19,Female,Electrical-Engineering,8,76.66,8.8,21,70,7,Robotics Club,12.9,2.3,3.1,Pass
+771,18,Male,Electrical-Engineering,1,82.59,5.2,1,51,5,Drama,12.9,9.2,2.33,Fail
+772,25,Male,Computer-Science,7,60.11,1.8,26,34,2,Sports,7.3,7.5,1.86,Pass
+773,21,Female,Mechanical-Engineering,7,10.89,4.6,10,78,1,Drama,1.3,14.7,3.99,Pass
+774,22,Female,Business-Administration,1,45.45,14.0,34,57,5,Debate,13.1,10.5,5.05,Fail
+775,17,Male,Business-Administration,5,41.31,4.7,11,78,6,Volunteer Work,8.8,12.4,1.26,Pass
+776,17,Male,Business-Administration,4,5.13,6.8,39,56,9,Volunteer Work,9.1,0.2,2.67,Pass
+777,21,Male,Civil-Engineering,6,17.4,8.7,40,2,5,Volunteer Work,13.4,5.5,0.28,Pass
+778,18,Male,Electrical-Engineering,3,21.21,14.8,26,60,6,Drama,2.8,10.4,0.11,Pass
+779,24,Male,Business-Administration,3,58.3,9.2,7,46,2,Debate,11.0,10.1,0.97,Pass
+780,30,Male,Electrical-Engineering,7,3.97,10.3,19,62,6,Drama,0.3,2.2,2.4,Fail
+781,30,Female,Biotechnology,1,11.38,4.2,10,33,4,Dance,11.0,15.2,6.53,Fail
+782,22,Female,Biotechnology,3,3.95,14.4,20,78,7,Drama,6.1,2.2,9.06,Pass
+783,24,Male,Electrical-Engineering,5,59.2,15.5,11,63,4,Music,9.1,8.0,6.08,Fail
+784,22,Male,Civil-Engineering,2,1.23,12.0,26,66,8,Drama,5.1,2.6,4.45,Fail
+785,25,Female,Electrical-Engineering,6,81.24,4.7,19,20,10,Sports,5.0,15.8,1.31,Fail
+786,26,Male,Biotechnology,1,54.14,1.3,38,92,7,Dance,12.1,13.1,9.82,Fail
+787,22,Female,Electrical-Engineering,4,38.69,3.7,10,38,2,Sports,5.0,10.4,0.17,Fail
+788,19,Female,Business-Administration,7,85.48,14.7,32,41,2,Dance,1.0,4.1,2.93,Fail
+789,18,Female,Electrical-Engineering,6,0.01,13.0,4,3,10,Drama,10.9,3.1,8.9,Pass
+790,24,Female,Computer-Science,7,95.06,15.2,40,15,9,Debate,6.2,1.5,7.8,Pass
+791,24,Female,Biotechnology,4,26.95,15.9,27,1,0,Drama,7.0,15.3,4.81,Pass
+792,22,Male,Civil-Engineering,4,90.01,13.1,40,56,0,Dance,11.7,0.4,1.5,Fail
+793,24,Female,Biotechnology,4,8.17,5.0,28,47,8,Drama,2.6,9.4,5.04,Pass
+794,17,Male,Computer-Science,8,95.41,10.9,33,50,8,Robotics Club,4.7,1.8,4.88,Fail
+795,22,Female,Mechanical-Engineering,7,32.74,12.5,17,99,0,Robotics Club,10.8,4.4,0.74,Pass
+796,27,Female,Biotechnology,8,29.54,10.7,2,57,3,Drama,4.7,15.9,5.38,Pass
+797,30,Female,Business-Administration,1,88.54,13.9,3,71,6,Volunteer Work,3.0,1.7,0.51,Pass
+798,27,Male,Business-Administration,1,45.32,7.2,13,96,0,Robotics Club,13.3,14.2,3.04,Pass
+799,29,Female,Electrical-Engineering,6,68.11,12.3,4,15,3,Debate,5.5,1.5,7.55,Pass
+800,17,Male,Business-Administration,5,62.5,8.1,32,18,3,Drama,2.6,14.4,4.97,Pass
+801,19,Male,Computer-Science,5,19.05,2.3,8,54,3,Drama,1.9,10.8,9.91,Pass
+802,19,Male,Business-Administration,7,81.18,8.6,12,42,7,Drama,7.0,10.0,9.18,Pass
+803,30,Male,Mechanical-Engineering,7,67.27,9.6,30,62,10,Music,3.5,5.8,3.18,Fail
+804,30,Female,Computer-Science,5,73.01,14.2,29,16,4,Sports,8.9,7.4,8.2,Fail
+805,26,Female,Biotechnology,2,20.05,13.6,35,40,1,Debate,4.2,4.2,9.66,Fail
+806,28,Male,Civil-Engineering,1,65.24,5.9,19,10,8,Music,9.0,11.4,3.02,Fail
+807,23,Male,Mechanical-Engineering,2,66.93,10.5,32,29,10,Dance,4.5,2.6,0.76,Fail
+808,21,Female,Electrical-Engineering,7,55.0,15.7,4,66,4,Music,6.3,13.6,6.97,Pass
+809,23,Male,Mechanical-Engineering,3,36.31,3.6,20,60,2,Music,12.4,6.9,7.79,Fail
+810,27,Female,Electrical-Engineering,2,72.98,9.6,27,91,4,Drama,4.5,4.7,3.46,Pass
+811,19,Female,Electrical-Engineering,8,51.27,15.5,27,86,4,Debate,8.2,13.2,3.39,Fail
+812,21,Female,Biotechnology,5,48.03,8.6,18,35,8,Debate,10.7,1.0,5.03,Pass
+813,30,Female,Business-Administration,4,47.3,9.0,18,67,2,Music,12.7,5.7,5.86,Fail
+814,28,Female,Electrical-Engineering,4,23.92,0.8,33,40,8,Debate,3.7,2.3,0.85,Pass
+815,19,Female,Computer-Science,5,3.21,5.0,31,9,10,Volunteer Work,3.0,13.8,0.65,Fail
+816,17,Male,Electrical-Engineering,3,16.28,6.5,30,63,5,Music,7.0,4.1,9.95,Pass
+817,18,Female,Civil-Engineering,3,47.82,1.0,19,87,6,Volunteer Work,5.0,2.1,0.2,Pass
+818,19,Female,Computer-Science,6,42.59,14.7,10,20,2,Dance,4.9,13.4,7.44,Pass
+819,21,Female,Biotechnology,6,16.56,0.7,29,97,4,Robotics Club,10.8,13.0,4.79,Pass
+820,18,Male,Business-Administration,1,95.94,0.5,0,44,9,Music,5.2,7.2,6.01,Fail
+821,19,Female,Civil-Engineering,5,49.87,12.5,17,100,9,Music,13.9,15.5,1.9,Pass
+822,20,Male,Biotechnology,4,7.33,14.3,39,2,7,Volunteer Work,4.8,11.0,0.73,Fail
+823,22,Male,Business-Administration,2,88.03,14.9,12,70,6,Debate,1.9,7.7,9.08,Fail
+824,27,Male,Biotechnology,6,71.72,1.7,23,85,5,Drama,2.4,11.8,1.69,Fail
+825,30,Female,Electrical-Engineering,5,58.5,15.9,9,4,1,Dance,5.4,11.5,0.92,Fail
+826,18,Female,Computer-Science,2,72.55,14.0,22,23,5,Robotics Club,1.3,4.2,6.88,Pass
+827,18,Female,Civil-Engineering,1,54.84,8.0,11,28,0,Volunteer Work,13.4,13.7,6.32,Fail
+828,18,Male,Computer-Science,2,64.98,4.3,19,67,5,Debate,0.3,8.9,3.91,Fail
+829,22,Female,Electrical-Engineering,5,25.67,12.2,17,42,8,Drama,1.7,15.1,3.78,Fail
+830,29,Female,Business-Administration,4,43.49,9.5,3,27,4,Volunteer Work,6.0,13.4,9.59,Fail
+831,22,Female,Electrical-Engineering,7,13.97,14.7,13,58,1,Drama,7.0,15.7,5.74,Pass
+832,22,Male,Business-Administration,4,77.87,15.4,23,100,2,Dance,2.7,8.2,3.09,Pass
+833,21,Male,Business-Administration,5,51.11,5.0,19,33,9,Music,0.7,13.0,3.99,Fail
+834,20,Female,Mechanical-Engineering,4,65.53,10.9,6,65,5,Volunteer Work,5.0,11.6,6.81,Fail
+835,23,Male,Mechanical-Engineering,4,32.96,4.6,23,8,1,Dance,11.2,12.6,2.36,Pass
+836,26,Male,Civil-Engineering,8,76.24,2.0,36,88,5,Dance,7.3,7.3,2.33,Fail
+837,28,Male,Computer-Science,5,88.54,5.1,37,4,6,Robotics Club,12.8,14.1,8.64,Fail
+838,17,Male,Business-Administration,1,66.38,13.8,27,97,3,Dance,11.9,14.8,0.96,Fail
+839,30,Male,Business-Administration,7,89.71,9.4,38,42,1,Music,8.0,2.4,4.11,Pass
+840,27,Female,Computer-Science,5,88.32,8.1,38,49,8,Robotics Club,8.8,12.4,5.51,Pass
+841,29,Female,Business-Administration,7,23.85,6.9,6,47,10,Sports,1.8,6.7,9.56,Fail
+842,25,Female,Mechanical-Engineering,7,25.74,9.7,16,66,8,Volunteer Work,11.3,13.5,4.09,Fail
+843,17,Male,Electrical-Engineering,7,50.71,14.9,21,36,1,Dance,0.9,7.4,6.46,Pass
+844,23,Male,Biotechnology,4,93.61,13.6,30,88,0,Dance,5.9,14.3,9.32,Pass
+845,23,Male,Biotechnology,4,16.16,6.4,1,77,4,Dance,8.2,1.7,7.73,Fail
+846,23,Male,Electrical-Engineering,3,14.4,10.2,8,40,3,Drama,12.6,14.2,1.02,Pass
+847,17,Female,Electrical-Engineering,4,78.1,4.2,0,62,6,Volunteer Work,7.5,2.0,9.5,Fail
+848,30,Male,Electrical-Engineering,1,76.16,0.3,14,58,10,Volunteer Work,4.0,4.4,8.21,Pass
+849,23,Male,Business-Administration,2,98.14,6.6,10,25,7,Debate,12.3,13.5,7.05,Pass
+850,28,Female,Computer-Science,5,58.79,1.7,18,10,5,Music,5.8,11.4,7.94,Pass
+851,24,Male,Computer-Science,8,67.45,7.5,14,66,0,Volunteer Work,11.6,7.5,1.95,Fail
+852,20,Male,Biotechnology,2,11.88,7.4,6,1,10,Music,3.3,1.7,2.76,Fail
+853,24,Male,Civil-Engineering,7,26.26,8.7,26,65,0,Volunteer Work,8.6,9.6,5.34,Fail
+854,19,Female,Computer-Science,7,43.25,15.9,13,34,9,Music,6.7,8.5,5.45,Fail
+855,29,Male,Civil-Engineering,6,29.21,9.8,5,45,7,Music,2.3,13.6,7.46,Fail
+856,22,Male,Business-Administration,8,30.92,9.6,17,16,1,Sports,5.8,12.8,6.8,Fail
+857,19,Male,Electrical-Engineering,5,88.27,10.9,7,60,4,Dance,10.5,0.2,4.28,Fail
+858,20,Female,Computer-Science,7,20.0,6.6,19,77,7,Volunteer Work,4.8,10.3,1.29,Pass
+859,26,Male,Business-Administration,2,51.69,14.4,19,21,5,Dance,11.0,0.8,0.41,Pass
+860,27,Male,Civil-Engineering,8,65.19,13.7,25,52,8,Music,10.3,7.1,5.68,Fail
+861,18,Female,Computer-Science,4,22.33,15.2,11,13,5,Drama,10.9,2.8,8.13,Pass
+862,24,Female,Computer-Science,1,23.99,2.1,38,15,1,Drama,7.0,4.8,0.71,Pass
+863,29,Male,Computer-Science,5,70.84,14.4,37,92,10,Dance,1.3,4.3,7.05,Fail
+864,28,Male,Computer-Science,3,40.9,1.8,6,77,2,Dance,9.5,4.9,2.97,Fail
+865,30,Male,Biotechnology,1,65.22,15.1,14,85,0,Debate,12.0,2.3,5.14,Pass
+866,21,Female,Computer-Science,3,53.84,9.6,13,20,3,Sports,6.6,15.1,1.99,Fail
+867,23,Female,Business-Administration,5,1.52,13.9,2,98,5,Sports,2.3,14.6,8.57,Fail
+868,27,Female,Business-Administration,1,31.22,13.0,1,29,1,Sports,8.2,15.7,6.15,Fail
+869,22,Male,Business-Administration,4,25.3,10.3,33,21,8,Robotics Club,7.9,15.5,1.17,Pass
+870,22,Male,Biotechnology,8,50.91,14.1,30,53,10,Music,10.9,13.8,4.1,Fail
+871,27,Male,Computer-Science,5,74.32,12.2,35,9,5,Drama,0.6,7.5,5.1,Fail
+872,22,Female,Mechanical-Engineering,5,28.85,9.6,8,52,9,Drama,2.9,2.4,9.75,Pass
+873,17,Female,Computer-Science,1,49.26,9.0,29,74,7,Robotics Club,1.2,2.5,9.59,Pass
+874,27,Female,Business-Administration,1,5.8,9.8,39,98,0,Music,10.8,9.0,7.2,Pass
+875,25,Female,Civil-Engineering,4,80.65,2.2,23,20,1,Dance,2.3,9.7,0.09,Pass
+876,23,Female,Civil-Engineering,8,54.69,5.7,5,53,1,Dance,5.3,5.9,5.91,Pass
+877,29,Male,Business-Administration,8,5.71,11.4,8,30,9,Debate,7.3,14.4,4.15,Pass
+878,23,Male,Mechanical-Engineering,8,27.13,11.7,13,82,5,Debate,4.3,13.5,5.88,Fail
+879,21,Female,Electrical-Engineering,2,48.62,13.8,22,52,4,Debate,4.4,10.5,8.09,Pass
+880,25,Male,Business-Administration,8,20.6,3.5,14,2,7,Music,9.5,7.2,0.01,Pass
+881,19,Male,Mechanical-Engineering,4,68.7,13.3,3,60,1,Music,8.9,0.0,7.17,Pass
+882,17,Male,Electrical-Engineering,6,7.77,13.1,14,80,4,Volunteer Work,8.2,1.8,4.37,Pass
+883,19,Male,Computer-Science,7,70.34,11.0,20,91,9,Dance,3.4,11.1,3.38,Fail
+884,23,Female,Computer-Science,4,72.6,8.3,13,8,3,Robotics Club,10.1,1.9,8.96,Fail
+885,30,Female,Biotechnology,6,84.63,0.8,38,95,7,Debate,1.7,11.5,9.52,Pass
+886,24,Male,Electrical-Engineering,6,11.65,0.8,19,74,10,Drama,5.6,2.1,4.63,Fail
+887,27,Female,Computer-Science,4,9.19,5.2,23,94,9,Drama,6.4,9.5,1.37,Fail
+888,27,Male,Computer-Science,5,15.82,3.8,0,13,1,Dance,12.5,2.3,5.72,Fail
+889,23,Female,Business-Administration,2,19.68,10.1,1,47,2,Dance,10.1,12.3,7.41,Fail
+890,18,Female,Biotechnology,2,40.06,3.3,17,61,10,Robotics Club,0.6,10.8,2.3,Pass
+891,29,Male,Civil-Engineering,8,76.96,3.4,9,16,8,Sports,5.7,3.8,7.82,Fail
+892,21,Male,Mechanical-Engineering,2,96.17,15.3,30,94,8,Dance,12.9,1.9,1.94,Pass
+893,17,Female,Business-Administration,8,52.64,10.6,2,76,8,Robotics Club,1.0,11.8,5.28,Fail
+894,19,Male,Civil-Engineering,2,60.0,8.2,3,65,10,Drama,2.6,13.4,1.75,Pass
+895,18,Male,Computer-Science,4,35.84,16.0,0,16,8,Sports,2.1,13.4,0.3,Fail
+896,27,Female,Business-Administration,4,85.69,12.2,34,72,3,Debate,5.5,6.9,5.85,Pass
+897,25,Female,Business-Administration,8,47.64,3.7,21,26,2,Debate,2.2,7.5,6.45,Fail
+898,21,Female,Civil-Engineering,7,6.68,10.8,8,53,4,Robotics Club,0.8,8.9,4.14,Fail
+899,20,Female,Computer-Science,7,64.81,9.9,34,42,8,Robotics Club,7.4,15.3,4.72,Fail
+900,22,Female,Electrical-Engineering,8,73.25,10.0,9,3,1,Debate,13.2,10.1,4.16,Pass
+901,23,Male,Mechanical-Engineering,4,4.49,2.4,40,47,10,Music,10.6,6.3,1.37,Pass
+902,20,Male,Computer-Science,5,14.72,15.5,13,93,0,Music,6.0,12.6,0.56,Fail
+903,17,Male,Biotechnology,1,10.98,7.1,2,18,3,Dance,9.8,4.6,9.23,Pass
+904,26,Male,Computer-Science,8,33.74,1.4,31,30,5,Volunteer Work,5.6,2.0,7.3,Pass
+905,21,Female,Computer-Science,7,46.16,9.2,14,77,1,Robotics Club,4.0,2.1,3.79,Fail
+906,20,Female,Mechanical-Engineering,4,23.55,7.7,38,16,7,Robotics Club,7.7,11.5,8.92,Pass
+907,22,Female,Biotechnology,8,36.85,2.7,24,39,3,Drama,11.7,0.8,7.43,Pass
+908,30,Male,Civil-Engineering,8,85.46,10.5,24,78,8,Dance,13.9,14.3,6.25,Pass
+909,27,Female,Mechanical-Engineering,2,77.48,7.2,3,34,10,Volunteer Work,10.7,5.5,5.14,Pass
+910,23,Male,Civil-Engineering,7,60.71,12.5,11,11,4,Dance,2.8,7.5,1.23,Fail
+911,19,Female,Biotechnology,8,1.78,8.9,34,28,2,Volunteer Work,8.3,7.2,5.54,Pass
+912,26,Female,Mechanical-Engineering,1,96.15,0.6,19,42,5,Robotics Club,2.0,11.8,0.37,Pass
+913,20,Male,Electrical-Engineering,2,85.61,2.4,18,62,6,Drama,9.3,4.9,7.29,Fail
+914,19,Female,Electrical-Engineering,8,77.6,2.7,0,82,4,Debate,5.2,13.4,0.43,Pass
+915,21,Female,Biotechnology,2,58.64,9.5,25,52,4,Drama,11.1,5.8,4.62,Fail
+916,27,Female,Business-Administration,8,12.25,12.9,40,38,7,Dance,11.1,3.5,3.99,Pass
+917,24,Male,Civil-Engineering,4,34.21,11.9,14,46,5,Debate,4.4,4.5,4.84,Fail
+918,18,Male,Electrical-Engineering,1,88.12,7.1,26,62,4,Volunteer Work,6.4,1.3,7.25,Fail
+919,26,Male,Electrical-Engineering,7,89.68,12.1,15,60,6,Drama,5.7,8.5,3.08,Pass
+920,28,Female,Computer-Science,7,76.43,2.4,15,68,5,Volunteer Work,0.4,13.8,2.52,Pass
+921,18,Female,Electrical-Engineering,8,85.69,7.8,37,5,7,Dance,10.5,11.8,4.05,Fail
+922,17,Male,Civil-Engineering,7,83.84,6.6,31,97,7,Volunteer Work,0.9,9.1,2.39,Pass
+923,26,Male,Computer-Science,7,21.16,6.1,28,33,4,Drama,8.1,14.9,2.92,Fail
+924,28,Male,Mechanical-Engineering,2,77.98,13.2,39,93,3,Volunteer Work,10.7,3.8,3.7,Fail
+925,20,Male,Business-Administration,6,82.31,8.6,19,18,8,Dance,6.9,13.2,2.58,Fail
+926,30,Female,Mechanical-Engineering,8,21.68,9.5,21,4,7,Drama,9.4,5.0,1.69,Pass
+927,30,Female,Electrical-Engineering,6,98.46,1.1,35,89,5,Debate,12.1,10.1,6.18,Fail
+928,23,Female,Electrical-Engineering,8,85.97,6.6,38,74,4,Sports,10.0,9.0,6.93,Fail
+929,27,Male,Mechanical-Engineering,5,27.39,15.1,37,93,0,Dance,5.1,13.5,0.14,Fail
+930,23,Female,Computer-Science,8,63.25,3.4,22,3,8,Volunteer Work,13.4,12.3,6.58,Pass
+931,17,Female,Electrical-Engineering,4,17.19,7.7,25,15,1,Music,9.2,7.7,2.31,Fail
+932,28,Female,Mechanical-Engineering,3,17.08,13.2,4,79,0,Drama,13.1,0.8,2.18,Fail
+933,26,Male,Biotechnology,1,3.57,3.3,16,98,4,Debate,13.9,2.5,0.98,Fail
+934,26,Male,Business-Administration,6,8.82,14.7,35,94,4,Dance,10.7,0.5,3.79,Pass
+935,24,Female,Computer-Science,7,30.09,2.3,10,4,2,Dance,4.0,1.5,6.08,Pass
+936,27,Male,Computer-Science,3,86.23,5.6,3,47,9,Drama,2.7,7.1,3.65,Pass
+937,25,Female,Biotechnology,4,7.61,6.6,37,93,6,Drama,13.3,3.0,1.99,Pass
+938,28,Male,Civil-Engineering,6,92.27,11.5,38,59,2,Volunteer Work,12.0,3.2,2.97,Fail
+939,23,Female,Electrical-Engineering,8,4.87,14.8,25,43,0,Debate,10.0,7.0,4.07,Pass
+940,17,Male,Electrical-Engineering,5,6.68,8.0,25,81,1,Drama,9.2,11.3,1.98,Fail
+941,21,Female,Electrical-Engineering,3,16.53,11.1,1,56,8,Drama,3.0,1.1,9.69,Fail
+942,17,Male,Biotechnology,8,63.91,5.4,0,40,4,Debate,13.2,8.2,6.08,Fail
+943,27,Female,Mechanical-Engineering,8,93.02,8.2,7,5,10,Robotics Club,7.4,6.4,6.59,Pass
+944,20,Female,Biotechnology,5,56.61,12.4,22,22,7,Drama,7.0,11.0,7.56,Pass
+945,27,Female,Biotechnology,3,55.74,5.4,35,27,8,Music,8.4,10.1,1.35,Fail
+946,29,Male,Computer-Science,3,31.54,2.1,24,76,3,Robotics Club,2.5,8.3,7.28,Fail
+947,25,Male,Business-Administration,7,59.86,4.0,16,18,1,Drama,3.1,4.3,8.06,Pass
+948,28,Female,Business-Administration,4,70.5,8.7,39,55,10,Dance,5.5,14.8,5.88,Fail
+949,20,Female,Biotechnology,1,38.6,6.4,6,36,5,Sports,4.7,13.8,5.59,Pass
+950,26,Male,Mechanical-Engineering,8,68.1,7.4,24,16,6,Drama,6.7,2.6,0.63,Fail
+951,23,Female,Electrical-Engineering,3,17.74,5.6,10,79,5,Robotics Club,3.0,8.5,3.21,Fail
+952,27,Male,Computer-Science,8,78.68,6.1,36,4,3,Debate,1.1,7.8,9.45,Pass
+953,27,Female,Mechanical-Engineering,7,58.92,6.1,37,34,4,Dance,7.5,14.1,3.56,Pass
+954,22,Male,Mechanical-Engineering,3,68.55,15.3,37,57,10,Drama,8.6,13.8,1.24,Pass
+955,29,Male,Computer-Science,5,99.07,6.3,19,54,3,Music,6.3,14.9,8.79,Fail
+956,21,Male,Biotechnology,2,14.63,6.0,15,48,6,Debate,10.1,11.6,5.17,Pass
+957,20,Female,Civil-Engineering,4,14.12,13.2,26,47,4,Drama,5.5,15.9,2.12,Pass
+958,18,Male,Electrical-Engineering,4,83.95,9.1,18,19,2,Volunteer Work,7.7,3.4,4.18,Fail
+959,19,Female,Electrical-Engineering,7,57.97,1.4,31,0,7,Music,2.2,1.9,7.19,Pass
+960,23,Male,Biotechnology,8,8.79,15.7,33,42,5,Robotics Club,4.3,8.1,3.17,Fail
+961,28,Male,Electrical-Engineering,5,77.52,2.0,12,64,4,Robotics Club,6.9,1.2,4.3,Fail
+962,21,Female,Biotechnology,2,80.11,8.1,32,7,3,Music,3.9,0.4,7.77,Fail
+963,29,Female,Computer-Science,4,55.1,0.4,1,0,3,Robotics Club,2.9,3.5,0.12,Pass
+964,17,Male,Business-Administration,4,28.46,6.3,29,2,10,Drama,1.2,13.8,3.58,Fail
+965,28,Male,Electrical-Engineering,1,47.62,6.5,40,69,2,Sports,10.3,5.1,4.76,Fail
+966,26,Female,Mechanical-Engineering,6,55.7,12.5,5,68,4,Robotics Club,11.1,15.9,5.82,Pass
+967,26,Male,Mechanical-Engineering,4,70.81,9.5,40,64,4,Sports,2.7,12.6,0.18,Fail
+968,24,Male,Business-Administration,4,4.5,6.8,1,45,7,Dance,5.2,12.7,8.05,Fail
+969,30,Male,Mechanical-Engineering,4,78.38,15.7,14,26,1,Robotics Club,5.6,2.3,5.06,Fail
+970,27,Female,Electrical-Engineering,7,42.11,3.6,11,65,4,Music,13.5,10.2,1.69,Fail
+971,29,Male,Mechanical-Engineering,6,29.65,13.4,35,16,6,Volunteer Work,10.0,8.6,9.77,Pass
+972,26,Male,Mechanical-Engineering,3,91.72,3.2,24,89,3,Debate,9.4,14.1,5.74,Fail
+973,28,Male,Business-Administration,5,72.55,10.0,30,22,7,Drama,1.6,1.7,1.43,Pass
+974,18,Male,Computer-Science,7,31.54,2.8,9,2,9,Dance,1.6,0.6,5.37,Pass
+975,21,Male,Business-Administration,1,65.19,5.6,40,68,6,Music,3.9,3.8,6.88,Fail
+976,17,Male,Biotechnology,8,9.96,6.9,9,8,4,Debate,11.8,10.6,4.95,Fail
+977,26,Male,Civil-Engineering,7,70.43,8.9,37,82,3,Drama,7.7,10.9,5.47,Fail
+978,28,Male,Computer-Science,8,94.43,1.2,8,58,4,Sports,5.8,8.3,0.64,Pass
+979,28,Male,Civil-Engineering,1,69.9,2.8,9,97,4,Music,11.0,7.6,8.81,Pass
+980,26,Female,Computer-Science,3,62.44,4.9,14,86,8,Robotics Club,7.1,3.2,9.36,Pass
+981,23,Male,Civil-Engineering,6,52.86,14.9,28,51,9,Music,3.7,12.5,5.56,Pass
+982,30,Male,Civil-Engineering,3,92.48,0.7,28,24,1,Debate,12.7,14.2,9.67,Pass
+983,18,Female,Civil-Engineering,4,48.87,6.7,3,73,10,Robotics Club,6.4,3.3,9.62,Fail
+984,20,Male,Mechanical-Engineering,7,33.41,9.6,25,16,9,Debate,11.4,12.4,1.22,Pass
+985,26,Female,Electrical-Engineering,4,62.01,14.2,12,85,10,Robotics Club,0.7,14.8,7.01,Pass
+986,29,Female,Electrical-Engineering,8,87.19,7.0,0,3,8,Dance,11.0,6.3,2.41,Pass
+987,20,Male,Electrical-Engineering,2,9.53,5.7,22,79,6,Volunteer Work,1.7,4.1,7.21,Pass
+988,18,Female,Biotechnology,3,23.04,7.5,19,69,6,Drama,6.2,2.6,9.31,Pass
+989,20,Female,Civil-Engineering,2,10.26,9.1,20,70,2,Robotics Club,9.9,4.0,9.94,Fail
+990,25,Female,Civil-Engineering,3,48.45,10.5,5,3,10,Music,8.2,11.0,4.16,Fail
+991,18,Male,Electrical-Engineering,7,32.16,2.3,39,8,3,Sports,5.1,1.2,2.59,Fail
+992,26,Female,Mechanical-Engineering,1,25.82,10.1,13,54,7,Robotics Club,7.4,2.6,8.6,Pass
+993,21,Male,Computer-Science,6,61.78,5.6,25,87,6,Drama,8.7,3.9,7.67,Fail
+994,26,Male,Computer-Science,8,20.56,5.2,16,85,6,Robotics Club,6.8,4.1,2.32,Fail
+995,24,Male,Business-Administration,2,4.11,11.8,30,1,5,Drama,5.9,0.3,6.09,Fail
+996,28,Female,Civil-Engineering,7,93.43,13.2,36,2,10,Music,1.5,6.7,1.04,Pass
+997,28,Female,Business-Administration,8,74.08,15.0,17,69,1,Volunteer Work,12.5,15.0,7.33,Fail
+998,17,Male,Civil-Engineering,5,56.08,11.3,6,43,1,Dance,2.8,13.6,0.74,Fail
+999,26,Male,Electrical-Engineering,1,72.98,14.5,18,99,7,Robotics Club,13.0,11.9,3.44,Pass
+1000,25,Male,Civil-Engineering,8,36.26,10.7,30,54,5,Music,10.6,7.5,5.92,Pass

@@ -1,3 +1,4 @@
 venv/
 __pycache__/
 .pytest_cache/
+cifar-10-batches-py/

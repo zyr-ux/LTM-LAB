@@ -2,3 +2,4 @@ venv/
 __pycache__/
 .pytest_cache/
 cifar-10-batches-py/
+cats_and_dogs_kaggle_dataset/

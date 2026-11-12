@@ -1,4 +1,5 @@
 import unittest
+from unittest import mock
 import student
 
 def setUpModule():
@@ -24,6 +25,16 @@ class TestStudent(unittest.TestCase):
 
     # def tearDown(self):
     #     print('Ran after each test method')
+
+    def test_student_age_negative(self):
+        with self.assertRaises(student.AgeException):
+            student.Student(1,'Sid',-22)
+
+    def test_student_password(self):
+        student.random.randint = mock.Mock()
+        student.random.randint.return_value = 1
+        hp = student.Student(1,'hp',25)
+        self.assertEqual(hp.get_password(),5253)
 
 # if __name__ == '__main__':
 #     unittest.main(verbosity=2)

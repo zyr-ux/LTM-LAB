@@ -27,9 +27,9 @@ def s():
     env_notebook = os.environ.get("MS2_NOTEBOOK")
     candidates = [
         env_notebook,
-        "solution_with_code.ipynb",
-        "solution.ipynb",
-        "solution1.ipynb",
+        # "solution_with_code.ipynb",
+        # "solution.ipynb",
+        # "solution1.ipynb",
         "solution_p1.ipynb",
         "solution_p2.ipynb",
     ]
@@ -58,36 +58,6 @@ def s():
     return ns
 
 
-@pytest.fixture(scope="module")
-def state(s):
-    training = {
-        "a": ("shipment_train.csv", "shipment_test.csv"),
-        "b": ("ticket_train.csv", "ticket_test.csv"),
-        "c": ("water_train.csv", "water_test.csv"),
-        "d": ("retail_train.csv", "retail_test.csv"),
-    }[CASE]
-
-    if CASE == "d":
-        a, b = s["prepare_datasets"](*(str(BASE / f) for f in training))
-        models = s["train_models"](a)
-        comp = s["evaluate_models"](models, b)
-        best = s["select_best_model"](comp, models)
-        return {"a": a, "b": b, "models": models, "comp": comp, "best": best}
-
-    prepared = s["prepare_datasets"](*(str(BASE / f) for f in training))
-    xtr, xte, ytr, yte = prepared[:4]
-    models = s["train_models"](xtr, ytr)
-    evaluated = s["evaluate_models"](models, xte, yte)
-    comp = evaluated[0] if CASE == "b" else evaluated
-    best = s["select_best_model"](comp, models)
-    return {
-        "xtr": xtr, "xte": xte, "ytr": ytr, "yte": yte,
-        "models": models, "comp": comp, "best": best,
-        "encoder": prepared[4] if CASE == "b" else None,
-        "matrices": evaluated[1] if CASE == "b" else None,
-    }
-
-
 def run_integration(s, tmp_path):
     patterns = {
         "a": ["shipment_train.csv", "shipment_test.csv", "shipment_predict.csv"],
@@ -109,123 +79,148 @@ def run_integration(s, tmp_path):
         os.chdir(old)
 
 
-def test_T01_dedup(s, state, tmp_path):
+def test_T01_dedup(s, tmp_path):
     df = s["load_data"](str(BASE / "ticket_train.csv"))
     assert df["ticket_id"].is_unique
 
 
-def test_T02_timestamp(s, state, tmp_path):
+def test_T02_timestamp(s, tmp_path):
     df = s["load_data"](str(BASE / "ticket_train.csv"))
     assert pd.api.types.is_datetime64_any_dtype(df["opened_ts"])
     assert df["opened_ts"].notna().all()
 
 
-def test_T03_infinity(s, state, tmp_path):
+def test_T03_infinity(s, tmp_path):
     df = s["load_data"](str(BASE / "ticket_train.csv"))
     assert not np.isinf(df[s["RAW_NUMERIC"]].to_numpy(dtype=float)).any()
 
 
-def test_T04_numericstring(s, state, tmp_path):
+def test_T04_numericstring(s, tmp_path):
     df = s["load_data"](str(BASE / "ticket_train.csv"))
     assert not df["customer_tier"].str.contains(r"\.0$", regex=True).any()
 
 
-def test_T05_targetnormal(s, state, tmp_path):
+def test_T05_targetnormal(s, tmp_path):
     df = s["load_data"](str(BASE / "ticket_train.csv"))
     target = df["priority"].dropna()
     assert target.str.upper().eq(target).all()
     assert not target.str.contains(" ").any()
 
 
-def test_T06_datetimefeatures(s, state, tmp_path):
+def test_T06_datetimefeatures(s, tmp_path):
     df = s["load_data"](str(BASE / "ticket_test.csv"))
     assert (df["opened_hour"] == df["opened_ts"].dt.hour).all()
     assert (df["opened_month"] == df["opened_ts"].dt.month).all()
 
 
-def test_T07_safe_division(s, state, tmp_path):
+def test_T07_safe_division(s, tmp_path):
     df = s["load_data"](str(BASE / "ticket_train.csv"))
     assert not np.isinf(df["backlog_per_agent"].dropna().to_numpy()).any()
 
 
-def test_T08_features(s, state, tmp_path):
+def test_T08_features(s, tmp_path):
     assert len(s["FEATURES"]) == 11
     assert "ticket_id" not in s["FEATURES"]
     assert s["TARGET"] not in s["FEATURES"]
 
 
-def test_T09_preprocessor(s, state, tmp_path):
-    pipe = s["build_pipeline"](state["models"]["random_forest"].named_steps["model"])
+def test_T09_preprocessor(s, tmp_path):
+    from sklearn.ensemble import RandomForestClassifier
+    pipe = s["build_pipeline"](RandomForestClassifier())
     assert isinstance(pipe.named_steps["preprocessor"], ColumnTransformer)
     assert len(pipe.named_steps["preprocessor"].transformers) == 2
 
 
-def test_T10_labelencode(s, state, tmp_path):
-    assert isinstance(state["encoder"], LabelEncoder)
-    assert set(state["encoder"].classes_) == set(s["CLASS_NAMES"])
-    assert set(state["ytr"].unique()) == {0, 1, 2}
+def test_T10_labelencode(s, tmp_path):
+    prepared = s["prepare_datasets"](str(BASE / "ticket_train.csv"), str(BASE / "ticket_test.csv"))
+    xtr, xte, ytr, yte = prepared[:4]
+    encoder = prepared[4]
+    assert isinstance(encoder, LabelEncoder)
+    assert set(encoder.classes_) == set(s["CLASS_NAMES"])
+    assert set(ytr.unique()) == {0, 1, 2}
 
+def test_T11_invalidtargets(s, tmp_path):
+    prepared = s["prepare_datasets"](str(BASE / "ticket_train.csv"), str(BASE / "ticket_test.csv"))
+    xtr, xte, ytr, yte = prepared[:4]
+    assert ytr.notna().all() and yte.notna().all()
+    assert len(xtr) == len(ytr)
 
-def test_T11_invalidtargets(s, state, tmp_path):
-    assert state["ytr"].notna().all() and state["yte"].notna().all()
-    assert len(state["xtr"]) == len(state["ytr"])
+def test_T12_columnexclude(s, tmp_path):
+    prepared = s["prepare_datasets"](str(BASE / "ticket_train.csv"), str(BASE / "ticket_test.csv"))
+    xtr, xte, ytr, yte = prepared[:4]
+    assert xtr.columns.tolist() == s["FEATURES"]
+    assert "opened_ts" not in xtr
 
+def test_T13_modelclasses(s, tmp_path):
+    prepared = s["prepare_datasets"](str(BASE / "ticket_train.csv"), str(BASE / "ticket_test.csv"))
+    xtr, xte, ytr, yte = prepared[:4]
+    models = s["train_models"](xtr, ytr)
+    assert set(models) == {"logistic_regression", "random_forest"}
 
-def test_T12_columnexclude(s, state, tmp_path):
-    assert state["xtr"].columns.tolist() == s["FEATURES"]
-    assert "opened_ts" not in state["xtr"]
+def test_T14_fitted(s, tmp_path):
+    prepared = s["prepare_datasets"](str(BASE / "ticket_train.csv"), str(BASE / "ticket_test.csv"))
+    xtr, xte, ytr, yte = prepared[:4]
+    models = s["train_models"](xtr, ytr)
+    assert all(hasattr(p.named_steps["model"], "classes_") for p in models.values())
 
+def test_T15_macro(s, tmp_path):
+    prepared = s["prepare_datasets"](str(BASE / "ticket_train.csv"), str(BASE / "ticket_test.csv"))
+    xtr, xte, ytr, yte = prepared[:4]
+    models = s["train_models"](xtr, ytr)
+    evaluated = s["evaluate_models"](models, xte, yte)
+    comp, matrices = evaluated
+    row = comp.iloc[0]
+    p = models[row["model_name"]]
+    y = p.predict(xte)
+    assert np.isclose(row["macro_f1"], f1_score(yte, y, labels=[0, 1, 2], average="macro", zero_division=0))
 
-def test_T13_modelclasses(s, state, tmp_path):
-    assert set(state["models"]) == {"logistic_regression", "random_forest"}
+def test_T16_weighted(s, tmp_path):
+    prepared = s["prepare_datasets"](str(BASE / "ticket_train.csv"), str(BASE / "ticket_test.csv"))
+    xtr, xte, ytr, yte = prepared[:4]
+    models = s["train_models"](xtr, ytr)
+    evaluated = s["evaluate_models"](models, xte, yte)
+    comp, matrices = evaluated
+    row = comp.iloc[0]
+    p = models[row["model_name"]]
+    y = p.predict(xte)
+    assert np.isclose(row["weighted_f1"], f1_score(yte, y, labels=[0, 1, 2], average="weighted", zero_division=0))
 
-
-def test_T14_fitted(s, state, tmp_path):
-    assert all(hasattr(p.named_steps["model"], "classes_") for p in state["models"].values())
-
-
-def test_T15_macro(s, state, tmp_path):
-    row = state["comp"].iloc[0]
-    p = state["models"][row["model_name"]]
-    y = p.predict(state["xte"])
-    assert np.isclose(
-        row["macro_f1"],
-        f1_score(state["yte"], y, labels=[0, 1, 2], average="macro", zero_division=0),
-    )
-
-
-def test_T16_weighted(s, state, tmp_path):
-    row = state["comp"].iloc[0]
-    p = state["models"][row["model_name"]]
-    y = p.predict(state["xte"])
-    assert np.isclose(
-        row["weighted_f1"],
-        f1_score(state["yte"], y, labels=[0, 1, 2], average="weighted", zero_division=0),
-    )
-
-
-def test_T17_confusion(s, state, tmp_path):
-    for_name = state["best"][0]
-    cm = state["matrices"][for_name]
+def test_T17_confusion(s, tmp_path):
+    prepared = s["prepare_datasets"](str(BASE / "ticket_train.csv"), str(BASE / "ticket_test.csv"))
+    xtr, xte, ytr, yte = prepared[:4]
+    models = s["train_models"](xtr, ytr)
+    evaluated = s["evaluate_models"](models, xte, yte)
+    comp, matrices = evaluated
+    best = s["select_best_model"](comp, models)
+    cm = matrices[best[0]]
     assert cm.shape == (3, 3)
-    assert cm.sum() == len(state["yte"])
+    assert cm.sum() == len(yte)
 
+def test_T18_sortbest(s, tmp_path):
+    prepared = s["prepare_datasets"](str(BASE / "ticket_train.csv"), str(BASE / "ticket_test.csv"))
+    xtr, xte, ytr, yte = prepared[:4]
+    models = s["train_models"](xtr, ytr)
+    evaluated = s["evaluate_models"](models, xte, yte)
+    comp, matrices = evaluated
+    best = s["select_best_model"](comp, models)
+    assert comp["macro_f1"].is_monotonic_decreasing
+    assert best[1] is models[best[0]]
 
-def test_T18_sortbest(s, state, tmp_path):
-    c = state["comp"]
-    assert c["macro_f1"].is_monotonic_decreasing
-    assert state["best"][1] is state["models"][state["best"][0]]
-
-
-def test_T19_inverse(s, state, tmp_path):
+def test_T19_inverse(s, tmp_path):
+    prepared = s["prepare_datasets"](str(BASE / "ticket_train.csv"), str(BASE / "ticket_test.csv"))
+    xtr, xte, ytr, yte = prepared[:4]
+    models = s["train_models"](xtr, ytr)
+    evaluated = s["evaluate_models"](models, xte, yte)
+    comp, matrices = evaluated
+    best = s["select_best_model"](comp, models)
+    encoder = prepared[4]
     df = s["load_data"](str(BASE / "ticket_predict.csv"))
-    r = s["predict_priority"](state["best"][1], state["encoder"], df)
+    r = s["predict_priority"](best[1], encoder, df)
     assert r.columns.tolist() == ["ticket_id", "predicted_priority", "confidence", "high_probability"]
     assert set(r["predicted_priority"]).issubset(set(s["CLASS_NAMES"]))
     assert r["high_probability"].between(0, 1).all()
 
-
-def test_T20_integration(s, state, tmp_path):
+def test_T20_integration(s, tmp_path):
     name, comp, result, path = run_integration(s, tmp_path)
     assert (path / "confusion_matrix.csv").exists()
     assert (path / "ticket_predictions.csv").exists()

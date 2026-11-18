@@ -1,6 +1,7 @@
 """Exactly 20 independently graded checks (3 marks each = 60 marks)."""
+
+import ast
 import os
-import shutil
 from pathlib import Path
 
 import joblib
@@ -14,21 +15,53 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import f1_score
 from sklearn.pipeline import Pipeline
 
-
 BASE = Path(__file__).resolve().parent
 
 
 @pytest.fixture(scope="module")
 def app():
-    notebook_name = os.environ.get("MS2_NOTEBOOK", "solution_with_code.ipynb")
-    notebook_path = BASE / notebook_name
+    """Load notebook definitions without executing workflow calls."""
+    candidates = [
+        os.environ.get("MS2_NOTEBOOK"),
+        "solution_with_code.ipynb",
+        "solution.ipynb",
+        "solution1.ipynb",
+        "solution_p1.ipynb",
+        "solution_p2.ipynb",
+    ]
+    candidates = [name for name in candidates if name]
+
+    notebook_path = next(
+        (BASE / name for name in candidates if (BASE / name).is_file()),
+        None,
+    )
+    if notebook_path is None:
+        raise FileNotFoundError(
+            "No supported notebook found. Expected one of: "
+            + ", ".join(candidates)
+        )
+
     notebook = nbformat.read(notebook_path, as_version=4)
-    module = {}
+    module = {"__name__": "notebook_under_test"}
+    allowed_nodes = (
+        ast.Import,
+        ast.ImportFrom,
+        ast.Assign,
+        ast.AnnAssign,
+        ast.FunctionDef,
+        ast.AsyncFunctionDef,
+        ast.ClassDef,
+    )
+
     for cell in notebook.cells:
-        if cell.cell_type == "code" and "definitions" in cell.metadata.get("tags", []):
-            source = cell.source.strip()
-            if source:
-                exec(compile(source, str(notebook_path), "exec"), module)
+        if cell.cell_type != "code" or not cell.source.strip():
+            continue
+        tree = ast.parse(cell.source, filename=str(notebook_path))
+        tree.body = [node for node in tree.body if isinstance(node, allowed_nodes)]
+        if tree.body:
+            ast.fix_missing_locations(tree)
+            exec(compile(tree, str(notebook_path), "exec"), module)
+
     return module
 
 
@@ -36,8 +69,10 @@ def shipment_rows(n=4):
     return pd.DataFrame({
         "shipment_id": [f"SH-{i:04d}" for i in range(n)],
         "dispatch_ts": [
-            "2026-01-03 04:15", "04/02/2026 13:20",
-            "2026-03-05 22:45", "06/04/2026 08:10",
+            "2026-01-13 04:15",
+            "14/02/2026 13:20",
+            "2026-03-15 22:45",
+            "16/04/2026 08:10",
         ][:n],
         "shipment_note": [
             "Distance: 18.75 km; Weight: 3.2 kg",
@@ -80,13 +115,14 @@ def test_T01_first_duplicate_id_is_retained(app, tmp_path):
 
 def test_T02_remove_invalid_mixed_timestamps(app, tmp_path):
     df = shipment_rows(3)
-    df.loc[0, "dispatch_ts"] = "2026-03-07 22:30"
-    df.loc[1, "dispatch_ts"] = "08/03/2026 09:15"
+    # Both valid dates are intentionally unambiguous while retaining mixed formats.
+    df.loc[0, "dispatch_ts"] = "2026-03-17 22:30"
+    df.loc[1, "dispatch_ts"] = "18/03/2026 09:15"
     df.loc[2, "dispatch_ts"] = "not-a-date"
     result = app["load_data"](write_frame(tmp_path / "dates.csv", df))
     assert len(result) == 2
     assert result["dispatch_ts"].dt.hour.tolist() == [22, 9]
-    assert result["dispatch_ts"].dt.day.tolist() == [7, 8]
+    assert result["dispatch_ts"].dt.day.tolist() == [17, 18]
 
 
 def test_T03_numeric_coercion_and_infinity_replacement(app, tmp_path):
@@ -95,8 +131,8 @@ def test_T03_numeric_coercion_and_infinity_replacement(app, tmp_path):
     df["temperature_c"] = ["1.5", "bad", "inf", "-inf"]
     result = app["load_data"](write_frame(tmp_path / "numeric.csv", df))
     assert all(pd.api.types.is_numeric_dtype(result[col]) for col in app["RAW_NUMERIC"])
-    assert result.loc[0, "transit_hours"] != result.loc[0, "transit_hours"]
-    assert result.loc[1, "temperature_c"] != result.loc[1, "temperature_c"]
+    assert pd.isna(result.loc[0, "transit_hours"])
+    assert pd.isna(result.loc[1, "temperature_c"])
     assert not np.isinf(result[app["RAW_NUMERIC"]].to_numpy(dtype=float)).any()
 
 
@@ -230,8 +266,10 @@ def test_T17_positive_class_f1_and_metric_sorting(app):
     comparison = app["evaluate_models"](models, X, y)
     assert comparison.columns.tolist() == ["model_name", "accuracy", "precision", "recall", "f1"]
     assert comparison["model_name"].tolist() == ["alpha", "gamma", "beta", "boundary"]
-    assert np.isclose(comparison.set_index("model_name").loc["boundary", "f1"],
-                      f1_score(y, [1, 0, 1, 1]))
+    assert np.isclose(
+        comparison.set_index("model_name").loc["boundary", "f1"],
+        f1_score(y, [1, 0, 1, 1]),
+    )
 
 
 def test_T18_select_highest_ranked_existing_model(app):

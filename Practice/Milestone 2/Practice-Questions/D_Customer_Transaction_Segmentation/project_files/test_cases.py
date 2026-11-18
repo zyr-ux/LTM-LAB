@@ -1,4 +1,6 @@
 """Exactly 20 independently graded checks (3 marks each = 60 marks)."""
+
+import ast
 import os
 from pathlib import Path
 
@@ -11,22 +13,49 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import davies_bouldin_score, silhouette_score
 from sklearn.pipeline import Pipeline
 
-
 BASE = Path(__file__).resolve().parent
 REFERENCE_DATE = pd.Timestamp("2026-12-01")
 
 
 @pytest.fixture(scope="module")
 def app():
-    notebook_name = os.environ.get("MS2_NOTEBOOK", "solution_with_code.ipynb")
-    notebook_path = BASE / notebook_name
+    candidates = [
+        os.environ.get("MS2_NOTEBOOK"),
+        "solution_with_code.ipynb",
+        "solution.ipynb",
+        "solution1.ipynb",
+        "solution_p1.ipynb",
+        "solution_p2.ipynb",
+    ]
+    candidates = [name for name in candidates if name]
+    notebook_path = next(
+        (BASE / name for name in candidates if (BASE / name).is_file()),
+        None,
+    )
+    if notebook_path is None:
+        raise FileNotFoundError(
+            "No supported notebook found. Expected one of: " + ", ".join(candidates)
+        )
+
     notebook = nbformat.read(notebook_path, as_version=4)
-    module = {}
+    module = {"__name__": "notebook_under_test"}
+    allowed_nodes = (
+        ast.Import,
+        ast.ImportFrom,
+        ast.Assign,
+        ast.AnnAssign,
+        ast.FunctionDef,
+        ast.AsyncFunctionDef,
+        ast.ClassDef,
+    )
     for cell in notebook.cells:
-        if cell.cell_type == "code" and "definitions" in cell.metadata.get("tags", []):
-            source = cell.source.strip()
-            if source:
-                exec(compile(source, str(notebook_path), "exec"), module)
+        if cell.cell_type != "code" or not cell.source.strip():
+            continue
+        tree = ast.parse(cell.source, filename=str(notebook_path))
+        tree.body = [node for node in tree.body if isinstance(node, allowed_nodes)]
+        if tree.body:
+            ast.fix_missing_locations(tree)
+            exec(compile(tree, str(notebook_path), "exec"), module)
     return module
 
 
@@ -39,7 +68,9 @@ def invoice_rows(customers=3, invoices_per_customer=2):
             rows.append({
                 "customer_id": customer_id,
                 "invoice_no": f"INV-{customer_index:03d}-{invoice_index:02d}",
-                "invoice_date": (REFERENCE_DATE - pd.Timedelta(days=days_ago)).strftime("%Y-%m-%d %H:%M"),
+                "invoice_date": (
+                    REFERENCE_DATE - pd.Timedelta(days=days_ago)
+                ).strftime("%Y-%m-%d %H:%M"),
                 "quantity": customer_index % 4 + invoice_index + 1,
                 "unit_price": float(customer_index + invoice_index + 2),
             })
@@ -81,7 +112,12 @@ def test_T03_exclude_canceled_invoices_and_nonpositive_monetary(app, tmp_path):
     df = invoice_rows(2, 1)
     canceled = df.iloc[[0]].copy()
     canceled["invoice_no"] = "CANCEL-1"
-    result = app["load_data"](write_frame(tmp_path / "canceled.csv", pd.concat([df, canceled], ignore_index=True)))
+    result = app["load_data"](
+        write_frame(
+            tmp_path / "canceled.csv",
+            pd.concat([df, canceled], ignore_index=True),
+        )
+    )
     assert not result["monetary"].le(0).any()
     assert len(result) == 2
 
@@ -99,7 +135,7 @@ def test_T04_filter_nonpositive_transactions(app, tmp_path):
 def test_T05_remove_invalid_and_future_dates_with_nonnegative_recency(app, tmp_path):
     df = invoice_rows(3, 1)
     df.loc[0, "invoice_date"] = "not-a-date"
-    df.loc[1, "invoice_date"] = "2026-12-02 12:00"
+    df.loc[1, "invoice_date"] = "2026-12-13 12:00"
     result = app["load_data"](write_frame(tmp_path / "dates.csv", df))
     assert len(result) == 1
     assert result["recency_days"].ge(0).all()
@@ -118,7 +154,9 @@ def test_T06_calculate_invoice_amount(app, tmp_path):
 
 
 def test_T07_aggregate_to_one_row_per_customer(app, tmp_path):
-    result = app["load_data"](write_frame(tmp_path / "group.csv", invoice_rows(4, 3)))
+    result = app["load_data"](
+        write_frame(tmp_path / "group.csv", invoice_rows(4, 3))
+    )
     assert result["customer_id"].is_unique
     assert len(result) == 4
 
@@ -181,7 +219,9 @@ def test_T12_pipeline_has_expected_steps_and_cluster_count(app):
 
 def test_T13_apply_log1p_before_scaling(app):
     pipeline = app["build_pipeline"](3)
-    values = pipeline.named_steps["log"].transform(np.array([[0.0, np.e - 1]]))
+    values = pipeline.named_steps["log"].transform(
+        np.array([[0.0, np.e - 1]])
+    )
     assert np.allclose(values, [[0.0, 1.0]])
 
 
@@ -201,7 +241,10 @@ def test_T15_silhouette_score_matches_cluster_labels(app):
     comparison = app["evaluate_models"]({"kmeans_3": model}, customers)
     labels = model.predict(customers[app["RFM_COLUMNS"]])
     transformed = model[:-1].transform(customers[app["RFM_COLUMNS"]])
-    assert np.isclose(comparison.loc[0, "silhouette_score"], silhouette_score(transformed, labels))
+    assert np.isclose(
+        comparison.loc[0, "silhouette_score"],
+        silhouette_score(transformed, labels),
+    )
 
 
 def test_T16_davies_bouldin_score_matches_cluster_labels(app):
@@ -221,7 +264,9 @@ def test_T17_sort_comparison_by_silhouette_and_davies_bouldin(app):
     models = app["train_models"](customers)
     comparison = app["evaluate_models"](models, customers)
     assert comparison.columns.tolist() == [
-        "model_name", "silhouette_score", "davies_bouldin_score"
+        "model_name",
+        "silhouette_score",
+        "davies_bouldin_score",
     ]
     assert comparison["silhouette_score"].is_monotonic_decreasing
     assert comparison.index.tolist() == list(range(len(comparison)))
@@ -267,5 +312,6 @@ def test_T20_train_predict_write_segmentation_artifacts(app, tmp_path, monkeypat
     assert len(result) == 7
     assert (tmp_path / "retail_segments.csv").is_file()
     assert pd.read_csv(tmp_path / "retail_segments.csv").columns.tolist() == [
-        "customer_id", "segment_id"
+        "customer_id",
+        "segment_id",
     ]

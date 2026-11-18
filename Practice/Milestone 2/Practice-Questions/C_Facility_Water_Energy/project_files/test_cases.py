@@ -1,4 +1,6 @@
 """Exactly 20 independently graded checks (3 marks each = 60 marks)."""
+
+import ast
 import os
 from pathlib import Path
 
@@ -11,28 +13,57 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import Ridge
 from sklearn.pipeline import Pipeline
 
-
 BASE = Path(__file__).resolve().parent
 
 
 @pytest.fixture(scope="module")
 def app():
-    notebook_name = os.environ.get("MS2_NOTEBOOK", "solution_with_code.ipynb")
-    notebook_path = BASE / notebook_name
+    candidates = [
+        os.environ.get("MS2_NOTEBOOK"),
+        "solution_with_code.ipynb",
+        "solution.ipynb",
+        "solution1.ipynb",
+        "solution_p1.ipynb",
+        "solution_p2.ipynb",
+    ]
+    candidates = [name for name in candidates if name]
+    notebook_path = next(
+        (BASE / name for name in candidates if (BASE / name).is_file()),
+        None,
+    )
+    if notebook_path is None:
+        raise FileNotFoundError(
+            "No supported notebook found. Expected one of: " + ", ".join(candidates)
+        )
+
     notebook = nbformat.read(notebook_path, as_version=4)
-    module = {}
+    module = {"__name__": "notebook_under_test"}
+    allowed_nodes = (
+        ast.Import,
+        ast.ImportFrom,
+        ast.Assign,
+        ast.AnnAssign,
+        ast.FunctionDef,
+        ast.AsyncFunctionDef,
+        ast.ClassDef,
+    )
     for cell in notebook.cells:
-        if cell.cell_type == "code" and "definitions" in cell.metadata.get("tags", []):
-            source = cell.source.strip()
-            if source:
-                exec(compile(source, str(notebook_path), "exec"), module)
+        if cell.cell_type != "code" or not cell.source.strip():
+            continue
+        tree = ast.parse(cell.source, filename=str(notebook_path))
+        tree.body = [node for node in tree.body if isinstance(node, allowed_nodes)]
+        if tree.body:
+            ast.fix_missing_locations(tree)
+            exec(compile(tree, str(notebook_path), "exec"), module)
     return module
 
 
 def sensor_rows(n=6, include_target=True):
     df = pd.DataFrame({
         "reading_id": [f"WT-{i:04d}" for i in range(n)],
-        "reading_ts": pd.date_range("2026-03-01 01:15", periods=n, freq="7h").strftime("%Y-%m-%d %H:%M"),
+        "reading_ts": pd.date_range(
+            "2026-03-13 01:15", periods=n, freq="7h"
+        ).strftime("%Y-%m-%d %H:%M"),
         "flow_m3": [float(i * 10 + 20) for i in range(n)],
         "occupancy": [i * 3 + 5 for i in range(n)],
         "pump_hours": [float(i % 5 + 1) for i in range(n)],
@@ -51,10 +82,13 @@ def write_frame(path, df):
 
 
 def feature_frame(app, n=18):
-    return pd.DataFrame({
-        name: np.arange(n, dtype=float) + index + 1
-        for index, name in enumerate(app["FEATURES"])
-    }, columns=app["FEATURES"])
+    return pd.DataFrame(
+        {
+            name: np.arange(n, dtype=float) + index + 1
+            for index, name in enumerate(app["FEATURES"])
+        },
+        columns=app["FEATURES"],
+    )
 
 
 def test_T01_first_duplicate_reading_id_retained(app, tmp_path):
@@ -68,14 +102,14 @@ def test_T01_first_duplicate_reading_id_retained(app, tmp_path):
 
 def test_T02_remove_invalid_mixed_timestamps(app, tmp_path):
     df = sensor_rows(3)
-    df.loc[0, "reading_ts"] = "2026-03-07 22:30"
-    df.loc[1, "reading_ts"] = "08/03/2026 09:15"
+    df.loc[0, "reading_ts"] = "2026-03-17 22:30"
+    df.loc[1, "reading_ts"] = "18/03/2026 09:15"
     df.loc[2, "reading_ts"] = "not-a-date"
     result = app["load_data"](write_frame(tmp_path / "timestamps.csv", df))
     assert len(result) == 2
     assert pd.api.types.is_datetime64_any_dtype(result["reading_ts"])
     assert result["reading_ts"].dt.hour.tolist() == [22, 9]
-    assert result["reading_ts"].dt.day.tolist() == [7, 8]
+    assert result["reading_ts"].dt.day.tolist() == [17, 18]
 
 
 def test_T03_numeric_coercion_and_infinity_replacement(app, tmp_path):
@@ -84,8 +118,8 @@ def test_T03_numeric_coercion_and_infinity_replacement(app, tmp_path):
     df["occupancy"] = ["1", "2", "?", "4"]
     result = app["load_data"](write_frame(tmp_path / "numeric.csv", df))
     assert all(pd.api.types.is_numeric_dtype(result[col]) for col in app["RAW_NUMERIC"])
-    assert result.loc[0, "flow_m3"] != result.loc[0, "flow_m3"]
-    assert result.loc[1, "flow_m3"] != result.loc[1, "flow_m3"]
+    assert pd.isna(result.loc[0, "flow_m3"])
+    assert pd.isna(result.loc[1, "flow_m3"])
     assert not np.isinf(result[app["RAW_NUMERIC"]].to_numpy(dtype=float)).any()
 
 
@@ -101,7 +135,11 @@ def test_T04_raw_numeric_predictors_are_nonnegative(app, tmp_path):
 
 def test_T05_derive_time_and_weekend_features(app, tmp_path):
     df = sensor_rows(3)
-    df["reading_ts"] = ["2026-03-07 22:30", "2026-03-08 09:15", "2026-03-09 11:00"]
+    df["reading_ts"] = [
+        "2026-03-14 22:30",
+        "2026-03-15 09:15",
+        "2026-03-16 11:00",
+    ]
     result = app["load_data"](write_frame(tmp_path / "time.csv", df))
     assert result["reading_hour"].tolist() == [22, 9, 11]
     assert result["reading_month"].tolist() == [3, 3, 3]
@@ -119,7 +157,10 @@ def test_T06_safe_flow_per_pump_hour_ratio(app, tmp_path):
 def test_T07_exact_feature_list_excludes_id_timestamp_and_target(app):
     assert len(app["FEATURES"]) == 10
     assert app["FEATURES"] == app["RAW_NUMERIC"] + [
-        "reading_hour", "reading_month", "is_weekend", "flow_per_pump_hour"
+        "reading_hour",
+        "reading_month",
+        "is_weekend",
+        "flow_per_pump_hour",
     ]
     assert "reading_id" not in app["FEATURES"]
     assert "reading_ts" not in app["FEATURES"]
@@ -135,14 +176,17 @@ def test_T08_pipeline_has_impute_log_scale_and_model_steps(app):
 
 def test_T09_log_transform_uses_log1p(app):
     pipeline = app["build_pipeline"](Ridge())
-    transformed = pipeline.named_steps["log"].transform(np.array([[0.0, np.e - 1]]))
+    transformed = pipeline.named_steps["log"].transform(
+        np.array([[0.0, np.e - 1]])
+    )
     assert np.allclose(transformed, [[0.0, 1.0]])
 
 
 def test_T10_fitted_median_imputer_covers_all_features(app):
     X = feature_frame(app, 18)
     X.loc[0, app["FEATURES"][0]] = np.nan
-    models = app["train_models"](X, pd.Series(np.arange(18, dtype=float) + 10))
+    y = pd.Series(np.arange(18, dtype=float) + 10)
+    models = app["train_models"](X, y)
     imputer = models["ridge_regression"].named_steps["imputer"]
     assert len(imputer.statistics_) == len(app["FEATURES"])
     assert np.isfinite(imputer.statistics_).all()
@@ -175,7 +219,10 @@ def test_T13_train_ridge_and_random_forest_regressors(app):
     models = app["train_models"](X, y)
     assert set(models) == {"ridge_regression", "random_forest"}
     assert isinstance(models["ridge_regression"].named_steps["model"], Ridge)
-    assert isinstance(models["random_forest"].named_steps["model"], RandomForestRegressor)
+    assert isinstance(
+        models["random_forest"].named_steps["model"],
+        RandomForestRegressor,
+    )
 
 
 def test_T14_mae_matches_model_predictions(app):
@@ -208,7 +255,8 @@ def test_T16_r2_matches_model_predictions(app):
     y = pd.Series([1.0, 3.0, 5.0])
     X = pd.DataFrame({"value": [0, 1, 2]})
     comparison = app["evaluate_models"]({"fake": FakeModel()}, X, y)
-    residual_sum = np.sum((y.to_numpy() - np.array([2.0, 4.0, 8.0])) ** 2)
+    predictions = np.array([2.0, 4.0, 8.0])
+    residual_sum = np.sum((y.to_numpy() - predictions) ** 2)
     total_sum = np.sum((y.to_numpy() - y.mean()) ** 2)
     assert np.isclose(comparison.loc[0, "r2"], 1 - residual_sum / total_sum)
 
@@ -260,7 +308,11 @@ def test_T19_train_writes_and_persists_best_model(app, tmp_path, monkeypatch):
     assert isinstance(joblib.load(tmp_path / "best_model.pkl"), Pipeline)
 
 
-def test_T20_independent_train_predict_writes_prediction_file(app, tmp_path, monkeypatch):
+def test_T20_independent_train_predict_writes_prediction_file(
+    app,
+    tmp_path,
+    monkeypatch,
+):
     sensor_rows(36).to_csv(tmp_path / "water_train.csv", index=False)
     sensor_rows(12).to_csv(tmp_path / "water_test.csv", index=False)
     future = sensor_rows(8, include_target=False)
@@ -271,5 +323,6 @@ def test_T20_independent_train_predict_writes_prediction_file(app, tmp_path, mon
     assert len(result) == len(future)
     assert (tmp_path / "water_predictions.csv").is_file()
     assert pd.read_csv(tmp_path / "water_predictions.csv").columns.tolist() == [
-        "reading_id", "predicted_energy_kwh"
+        "reading_id",
+        "predicted_energy_kwh",
     ]

@@ -1,5 +1,7 @@
-"""Exactly 20 independently graded checks (3 marks each = 60 marks)."""
-
+"""AI Services MS2 — Refrigerated Warehouse Cooling Energy Estimation.
+20 independent pytest checks × 3 marks = 60 marks.
+Tests use small temporary fixtures and never alter the distributed CSV files.
+"""
 import ast
 import os
 from pathlib import Path
@@ -9,309 +11,312 @@ import nbformat
 import numpy as np
 import pandas as pd
 import pytest
-from sklearn.cluster import KMeans
-from sklearn.metrics import davies_bouldin_score, silhouette_score
-from sklearn.pipeline import Pipeline
 
-BASE = Path(__file__).resolve().parent
-REFERENCE_DATE = pd.Timestamp("2026-12-01")
+PROJECT = Path(__file__).resolve().parent
 
 
 @pytest.fixture(scope="module")
-def app():
-    candidates = [
-        os.environ.get("MS2_NOTEBOOK"),
-        "solution_with_code.ipynb",
-        "solution.ipynb",
-        "solution1.ipynb",
-        "solution_p1.ipynb",
-        "solution_p2.ipynb",
-    ]
-    candidates = [name for name in candidates if name]
-    notebook_path = next(
-        (BASE / name for name in candidates if (BASE / name).is_file()),
-        None,
-    )
-    if notebook_path is None:
-        raise FileNotFoundError(
-            "No supported notebook found. Expected one of: " + ", ".join(candidates)
-        )
+def code():
+    requested = os.environ.get("MS2_NOTEBOOK")
 
-    notebook = nbformat.read(notebook_path, as_version=4)
-    module = {"__name__": "notebook_under_test"}
+    if requested:
+        notebook_path = PROJECT / requested
+        if not notebook_path.is_file():
+            raise FileNotFoundError(f"Notebook not found: {requested}")
+    else:
+        candidates = [
+            "solution_with_code.ipynb",
+            "solution.ipynb",
+            "solution1.ipynb",
+            "solution_p1.ipynb",
+            "solution_p2.ipynb",
+        ]
+        notebook_path = next(
+            (PROJECT / name for name in candidates if (PROJECT / name).is_file()),
+            None,
+        )
+        if notebook_path is None:
+            raise FileNotFoundError(
+                "No supported notebook found. Expected one of: " + ", ".join(candidates)
+            )
+
+    book = nbformat.read(notebook_path, as_version=4)
+    ns = {"__name__": "assessment_tests"}
     allowed_nodes = (
-        ast.Import,
-        ast.ImportFrom,
-        ast.Assign,
-        ast.AnnAssign,
-        ast.FunctionDef,
-        ast.AsyncFunctionDef,
-        ast.ClassDef,
+        ast.Import, ast.ImportFrom, ast.Assign, ast.AnnAssign,
+        ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef,
     )
-    for cell in notebook.cells:
+    for cell in book.cells:
         if cell.cell_type != "code" or not cell.source.strip():
             continue
         tree = ast.parse(cell.source, filename=str(notebook_path))
         tree.body = [node for node in tree.body if isinstance(node, allowed_nodes)]
         if tree.body:
             ast.fix_missing_locations(tree)
-            exec(compile(tree, str(notebook_path), "exec"), module)
-    return module
+            exec(compile(tree, str(notebook_path), "exec"), ns)
+    return ns
 
 
-def invoice_rows(customers=3, invoices_per_customer=2):
-    rows = []
-    for customer_index in range(customers):
-        customer_id = str(1000 + customer_index)
-        for invoice_index in range(invoices_per_customer):
-            days_ago = 4 + customer_index * 3 + invoice_index
-            rows.append({
-                "customer_id": customer_id,
-                "invoice_no": f"INV-{customer_index:03d}-{invoice_index:02d}",
-                "invoice_date": (
-                    REFERENCE_DATE - pd.Timedelta(days=days_ago)
-                ).strftime("%Y-%m-%d %H:%M"),
-                "quantity": customer_index % 4 + invoice_index + 1,
-                "unit_price": float(customer_index + invoice_index + 2),
-            })
-    return pd.DataFrame(rows)
-
-
-def write_frame(path, df):
-    df.to_csv(path, index=False)
-    return str(path)
-
-
-def customer_frame(n=18):
-    index = np.arange(n)
-    return pd.DataFrame({
-        "customer_id": [f"C{i:03d}" for i in index],
-        "recency_days": (index % 6) * 20 + 1,
-        "frequency": index % 5 + 1,
-        "monetary": (index % 4 + 1) * 100 + index * 3,
-    })
-
-
-def test_T01_remove_missing_and_empty_customer_ids(app, tmp_path):
-    df = invoice_rows(3, 1)
-    df.loc[1, "customer_id"] = ""
-    df.loc[2, "customer_id"] = None
-    result = app["load_data"](write_frame(tmp_path / "ids.csv", df))
-    assert result["customer_id"].tolist() == ["1000"]
-
-
-def test_T02_clean_numeric_like_customer_ids(app, tmp_path):
-    df = invoice_rows(2, 1)
-    df["customer_id"] = ["1000.0", "1001.0"]
-    result = app["load_data"](write_frame(tmp_path / "numeric-ids.csv", df))
-    assert result["customer_id"].tolist() == ["1000", "1001"]
-    assert not result["customer_id"].str.contains(r"\.0$", regex=True).any()
-
-
-def test_T03_exclude_canceled_invoices_and_nonpositive_monetary(app, tmp_path):
-    df = invoice_rows(2, 1)
-    canceled = df.iloc[[0]].copy()
-    canceled["invoice_no"] = "CANCEL-1"
-    result = app["load_data"](
-        write_frame(
-            tmp_path / "canceled.csv",
-            pd.concat([df, canceled], ignore_index=True),
-        )
-    )
-    assert not result["monetary"].le(0).any()
-    assert len(result) == 2
-
-
-def test_T04_filter_nonpositive_transactions(app, tmp_path):
-    df = invoice_rows(4, 1)
-    df.loc[0, "quantity"] = 0
-    df.loc[1, "unit_price"] = -2
-    result = app["load_data"](write_frame(tmp_path / "nonpositive.csv", df))
-    assert result["frequency"].ge(1).all()
-    assert result["monetary"].gt(0).all()
-    assert set(result["customer_id"]) == {"1002", "1003"}
-
-
-def test_T05_remove_invalid_and_future_dates_with_nonnegative_recency(app, tmp_path):
-    df = invoice_rows(3, 1)
-    df.loc[0, "invoice_date"] = "not-a-date"
-    df.loc[1, "invoice_date"] = "2026-12-13 12:00"
-    result = app["load_data"](write_frame(tmp_path / "dates.csv", df))
-    assert len(result) == 1
-    assert result["recency_days"].ge(0).all()
-
-
-def test_T06_calculate_invoice_amount(app, tmp_path):
+def sample(n=24, with_target=True):
+    dates = pd.date_range("2026-03-13 01:00", periods=n, freq="12h")
     df = pd.DataFrame({
-        "customer_id": ["999"],
-        "invoice_no": ["INV-1"],
-        "invoice_date": ["2026-11-25 12:00"],
-        "quantity": [2],
-        "unit_price": [5.0],
+        "reading_id": [f"RUN-{i:04d}" for i in range(n)],
+        "reading_start_ts": dates.strftime("%Y-%m-%d %H:%M"),
+        "site_code": ["MUM-01", "PUN-02", "BLR-03"] * (n // 3) + ["MUM-01"] * (n % 3),
+        "ambient_temperature_c": np.linspace(22, 40, n),
+        "chamber_setpoint_c": [-18, 2, -8] * (n // 3) + [-18] * (n % 3),
+        "goods_load_tonnes": np.linspace(1, 12, n),
+        "operating_hours": np.linspace(2, 12, n),
+        "door_open_minutes": np.linspace(10, 50, n),
+        "compressor_load_pct": np.linspace(35, 90, n),
+        "refrigerant_type": ["ammonia", "r134a", "co2"] * (n // 3) + ["ammonia"] * (n % 3),
+        "service_state": ["normal", "inspection_due", "derated"] * (n // 3) + ["normal"] * (n % 3),
+        "shift_code": ["1", "2.0", "3"] * (n // 3) + ["1"] * (n % 3),
     })
-    result = app["load_data"](write_frame(tmp_path / "amount.csv", df))
-    assert result.loc[0, "monetary"] == 10.0
+    if with_target:
+        df["energy_consumed_kwh"] = (
+            df["goods_load_tonnes"] * 30 + df["operating_hours"] * 25 + 200
+        ).round(1)
+    return df
 
 
-def test_T07_aggregate_to_one_row_per_customer(app, tmp_path):
-    result = app["load_data"](
-        write_frame(tmp_path / "group.csv", invoice_rows(4, 3))
+def write(tmp_path, df, name="input.csv"):
+    p = tmp_path / name
+    df.to_csv(p, index=False)
+    return str(p)
+
+
+def trained_pair(code):
+    d = sample(90).copy()
+    d["reading_start_ts"] = pd.to_datetime(d["reading_start_ts"])
+    d["start_hour"] = d["reading_start_ts"].dt.hour
+    d["is_weekend"] = (d["reading_start_ts"].dt.dayofweek >= 5).astype(int)
+    d["temperature_gap_c"] = d["ambient_temperature_c"] - d["chamber_setpoint_c"]
+    d["load_rate_tph"] = d["goods_load_tonnes"] / d["operating_hours"]
+    d["shift_code"] = d["shift_code"].replace({"2.0": "2"})
+    return d[code["FEATURES"]], d[code["TARGET"]]
+
+
+def test_01_first_duplicate_kept(code, tmp_path):
+    df = sample(4)
+    duplicate = df.iloc[[0]].copy()
+    duplicate["goods_load_tonnes"] = 999
+    got = code["load_data"](write(tmp_path, pd.concat([df, duplicate])))
+    assert len(got) == 4 and got.iloc[0]["goods_load_tonnes"] != 999
+
+
+def test_02_mixed_dates_and_invalid_removed(code, tmp_path):
+    df = sample(3)
+    df.loc[0, "reading_start_ts"] = "18/03/2026 22:00"
+    df.loc[1, "reading_start_ts"] = "invalid"
+    got = code["load_data"](write(tmp_path, df))
+    assert len(got) == 2 and got.iloc[0]["reading_start_ts"].hour == 22
+
+
+def test_03_numeric_coercion_and_infinity(code, tmp_path):
+    df = sample(3)
+    # Cast fixture columns to object so deliberately dirty CSV strings can be inserted
+    # on both older and newer pandas versions. This does not weaken the assertion.
+    df["goods_load_tonnes"] = df["goods_load_tonnes"].astype(object)
+    df["door_open_minutes"] = df["door_open_minutes"].astype(object)
+    df.loc[0, "goods_load_tonnes"] = "invalid"
+    df.loc[1, "door_open_minutes"] = "inf"
+    got = code["load_data"](write(tmp_path, df))
+    assert pd.isna(got.loc[0, "goods_load_tonnes"])
+    assert pd.isna(got.loc[1, "door_open_minutes"])
+
+
+def test_04_category_strip_lower_and_missing(code, tmp_path):
+    df = sample(3)
+    df.loc[0, "site_code"] = "  MUM-01 "
+    df.loc[1, "refrigerant_type"] = " "
+    df.loc[2, "service_state"] = None
+    got = code["load_data"](write(tmp_path, df))
+    assert got.loc[0, "site_code"] == "mum-01"
+    assert got.loc[1, "refrigerant_type"] == "unknown"
+    assert got.loc[2, "service_state"] == "unknown"
+
+
+def test_05_simple_shift_dot_zero_regex(code, tmp_path):
+    df = sample(3)
+    df["shift_code"] = [" +2.000 ", "3.0", "1"]
+    got = code["load_data"](write(tmp_path, df))
+    assert got["shift_code"].tolist() == ["+2", "3", "1"]
+
+
+def test_06_hour_and_weekend(code, tmp_path):
+    df = sample(2)
+    df.loc[0, "reading_start_ts"] = "2026-03-14 19:30"
+    df.loc[1, "reading_start_ts"] = "2026-03-16 03:00"
+    got = code["load_data"](write(tmp_path, df))
+    assert got["start_hour"].tolist() == [19, 3]
+    assert got["is_weekend"].tolist() == [1, 0]
+
+
+def test_07_temperature_gap_and_safe_rate(code, tmp_path):
+    df = sample(3)
+    df.loc[0, ["ambient_temperature_c", "chamber_setpoint_c", "goods_load_tonnes", "operating_hours"]] = [32, -8, 6, 3]
+    df.loc[1, "operating_hours"] = 0
+    df.loc[2, "operating_hours"] = -1
+    got = code["load_data"](write(tmp_path, df))
+    assert got.loc[0, "temperature_gap_c"] == 40
+    assert got.loc[0, "load_rate_tph"] == 2
+    assert pd.isna(got.loc[1, "load_rate_tph"])
+    assert pd.isna(got.loc[2, "load_rate_tph"])
+
+
+def test_08_keeps_order_optional_target_and_extra_column(code, tmp_path):
+    df = sample(5, False)
+    df["optional_note"] = "audit"
+    df = df.iloc[[4, 1, 3, 2, 0]]
+    got = code["load_data"](write(tmp_path, df))
+    assert got["reading_id"].tolist() == df["reading_id"].tolist()
+    assert "energy_consumed_kwh" not in got
+    assert "optional_note" in got
+
+
+def test_09_unfitted_model_pipeline(code):
+    from sklearn.linear_model import Ridge
+    p = code["build_pipeline"](Ridge())
+    assert p.__class__.__name__ == "Pipeline"
+    assert p.named_steps["model"].__class__.__name__ == "Ridge"
+    assert not hasattr(p.named_steps["preprocessor"], "transformers_")
+
+
+def test_10_column_transformer_numeric_and_categorical(code):
+    from sklearn.linear_model import Ridge
+    p = code["build_pipeline"](Ridge())
+    ct = p.named_steps["preprocessor"]
+    assert ct.__class__.__name__ == "ColumnTransformer"
+    assert list(ct.transformers[0][2]) == code["NUMERIC_FEATURES"]
+    assert list(ct.transformers[1][2]) == code["CATEGORICAL"]
+    num = ct.transformers[0][1]
+    assert [name for name, _ in num.steps] == ["imputer", "scaler"]
+    assert ct.transformers[1][1].handle_unknown == "ignore"
+
+
+def test_11_pipeline_handles_missing_and_unknown_categories(code):
+    from sklearn.linear_model import Ridge
+    X, y = trained_pair(code)
+    p = code["build_pipeline"](Ridge()).fit(X, y)
+    new = X.iloc[[0]].copy()
+    new.loc[new.index[0], "site_code"] = "new_site"
+    new.loc[new.index[0], "goods_load_tonnes"] = np.nan
+    assert np.isfinite(p.predict(new)).all()
+
+
+def test_12_prepare_returns_types_columns(code, tmp_path):
+    train = sample(9)
+    test = sample(6)
+    Xtr, Xte, ytr, yte = code["prepare_datasets"](
+        write(tmp_path, train, "train.csv"), write(tmp_path, test, "test.csv")
     )
-    assert result["customer_id"].is_unique
-    assert len(result) == 4
+    assert isinstance(Xtr, pd.DataFrame) and isinstance(Xte, pd.DataFrame)
+    assert isinstance(ytr, pd.Series) and isinstance(yte, pd.Series)
+    assert list(Xtr.columns) == code["FEATURES"]
+    assert list(Xte.columns) == code["FEATURES"]
 
 
-def test_T08_frequency_counts_unique_invoices(app, tmp_path):
-    df = pd.DataFrame({
-        "customer_id": ["999", "999"],
-        "invoice_no": ["INV-1", "INV-1"],
-        "invoice_date": ["2026-11-25 12:00"] * 2,
-        "quantity": [2, 3],
-        "unit_price": [5.0, 2.0],
-    })
-    result = app["load_data"](write_frame(tmp_path / "frequency.csv", df))
-    assert result.loc[0, "frequency"] == 1
-
-
-def test_T09_sum_customer_monetary_value(app, tmp_path):
-    df = pd.DataFrame({
-        "customer_id": ["999", "999"],
-        "invoice_no": ["INV-1", "INV-2"],
-        "invoice_date": ["2026-11-25 12:00"] * 2,
-        "quantity": [2, 3],
-        "unit_price": [5.0, 2.0],
-    })
-    result = app["load_data"](write_frame(tmp_path / "monetary.csv", df))
-    assert result.loc[0, "monetary"] == 16.0
-
-
-def test_T10_recency_uses_reference_date(app, tmp_path):
-    df = pd.DataFrame({
-        "customer_id": ["999"],
-        "invoice_no": ["INV-1"],
-        "invoice_date": ["2026-11-25 12:00"],
-        "quantity": [2],
-        "unit_price": [5.0],
-    })
-    result = app["load_data"](write_frame(tmp_path / "recency.csv", df))
-    assert result.loc[0, "recency_days"] == 6
-
-
-def test_T11_preserve_customer_first_seen_order(app, tmp_path):
-    df = pd.DataFrame({
-        "customer_id": ["B", "A", "B"],
-        "invoice_no": ["INV-1", "INV-2", "INV-3"],
-        "invoice_date": ["2026-11-28", "2026-11-27", "2026-11-29"],
-        "quantity": [1, 1, 1],
-        "unit_price": [10.0, 10.0, 10.0],
-    })
-    result = app["load_data"](write_frame(tmp_path / "order.csv", df))
-    assert result["customer_id"].tolist() == ["B", "A"]
-
-
-def test_T12_pipeline_has_expected_steps_and_cluster_count(app):
-    pipeline = app["build_pipeline"](3)
-    assert isinstance(pipeline, Pipeline)
-    assert list(pipeline.named_steps) == ["imputer", "log", "scaler", "model"]
-    assert isinstance(pipeline.named_steps["model"], KMeans)
-    assert pipeline.named_steps["model"].n_clusters == 3
-
-
-def test_T13_apply_log1p_before_scaling(app):
-    pipeline = app["build_pipeline"](3)
-    values = pipeline.named_steps["log"].transform(
-        np.array([[0.0, np.e - 1]])
+def test_13_invalid_infinite_negative_target_excluded(code, tmp_path):
+    tr = sample(9)
+    # Allow intentionally malformed target strings in the fixture across pandas versions.
+    tr[code["TARGET"]] = tr[code["TARGET"]].astype(object)
+    tr.loc[0, code["TARGET"]] = np.nan
+    tr.loc[1, code["TARGET"]] = -1
+    tr.loc[2, code["TARGET"]] = "inf"
+    tr.loc[3, code["TARGET"]] = "bad"
+    te = sample(6)
+    Xtr, Xte, ytr, yte = code["prepare_datasets"](
+        write(tmp_path, tr, "train.csv"), write(tmp_path, te, "test.csv")
     )
-    assert np.allclose(values, [[0.0, 1.0]])
+    assert len(Xtr) == len(ytr) == 5 and ytr.ge(0).all() and np.isfinite(ytr).all()
+    assert len(Xte) == len(yte) == 6
 
 
-def test_T14_fit_three_four_and_five_cluster_candidates(app):
-    customers = customer_frame(18)
-    models = app["train_models"](customers)
-    assert set(models) == {"kmeans_3", "kmeans_4", "kmeans_5"}
-    for name, count in (("kmeans_3", 3), ("kmeans_4", 4), ("kmeans_5", 5)):
-        model = models[name]
-        assert model.named_steps["model"].n_clusters == count
-        assert hasattr(model.named_steps["model"], "cluster_centers_")
+def test_14_models_keys_types_and_parameters(code):
+    X, y = trained_pair(code)
+    m = code["train_models"](X, y)
+    assert set(m) == {"ridge_regression", "random_forest"}
+    assert m["ridge_regression"].named_steps["model"].alpha == 1.0
+    rf = m["random_forest"].named_steps["model"]
+    assert (rf.n_estimators, rf.max_depth, rf.min_samples_leaf, rf.random_state, rf.n_jobs) == (120, 12, 2, 42, -1)
 
 
-def test_T15_silhouette_score_matches_cluster_labels(app):
-    customers = customer_frame(18)
-    model = app["build_pipeline"](3).fit(customers[app["RFM_COLUMNS"]])
-    comparison = app["evaluate_models"]({"kmeans_3": model}, customers)
-    labels = model.predict(customers[app["RFM_COLUMNS"]])
-    transformed = model[:-1].transform(customers[app["RFM_COLUMNS"]])
-    assert np.isclose(
-        comparison.loc[0, "silhouette_score"],
-        silhouette_score(transformed, labels),
-    )
+def test_15_independent_fitted_pipelines(code):
+    X, y = trained_pair(code)
+    m = code["train_models"](X, y)
+    assert m["ridge_regression"] is not m["random_forest"]
+    assert all(np.isfinite(p.predict(X.iloc[:3])).all() for p in m.values())
 
 
-def test_T16_davies_bouldin_score_matches_cluster_labels(app):
-    customers = customer_frame(18)
-    model = app["build_pipeline"](3).fit(customers[app["RFM_COLUMNS"]])
-    comparison = app["evaluate_models"]({"kmeans_3": model}, customers)
-    labels = model.predict(customers[app["RFM_COLUMNS"]])
-    transformed = model[:-1].transform(customers[app["RFM_COLUMNS"]])
-    assert np.isclose(
-        comparison.loc[0, "davies_bouldin_score"],
-        davies_bouldin_score(transformed, labels),
-    )
-
-
-def test_T17_sort_comparison_by_silhouette_and_davies_bouldin(app):
-    customers = customer_frame(18)
-    models = app["train_models"](customers)
-    comparison = app["evaluate_models"](models, customers)
-    assert comparison.columns.tolist() == [
-        "model_name",
-        "silhouette_score",
-        "davies_bouldin_score",
-    ]
-    assert comparison["silhouette_score"].is_monotonic_decreasing
-    assert comparison.index.tolist() == list(range(len(comparison)))
-
-
-def test_T18_select_existing_top_ranked_model(app):
-    comparison = pd.DataFrame({
-        "model_name": ["kmeans_4", "kmeans_3"],
-        "silhouette_score": [0.8, 0.6],
-    })
-    models = {"kmeans_3": object(), "kmeans_4": object()}
-    name, selected = app["select_best_model"](comparison, models)
-    assert name == "kmeans_4" and selected is models["kmeans_4"]
-
-
-def test_T19_segment_ids_preserve_customer_order(app):
-    class FakeModel:
+def test_16_evaluation_metrics(code):
+    class Fake:
+        def __init__(self, y):
+            self.y = np.array(y)
         def predict(self, X):
-            return np.array([2, 0, 1])
+            return self.y
+    y = pd.Series([10.0, 20.0, 30.0])
+    X = pd.DataFrame({"a": [1, 2, 3]})
+    res = code["evaluate_models"]({"exact": Fake([10, 20, 30]), "off": Fake([12, 17, 30])}, X, y)
+    perfect = res.set_index("model_name").loc["exact"]
+    assert perfect["mae"] == 0 and perfect["rmse"] == 0 and perfect["r2"] == 1
+    off = res.set_index("model_name").loc["off"]
+    assert off["mae"] == pytest.approx(5 / 3)
+    assert off["rmse"] == pytest.approx((13 / 3) ** 0.5)
 
-    customers = customer_frame(3)
-    result = app["segment_customers"](FakeModel(), customers)
-    assert result.columns.tolist() == ["customer_id", "segment_id"]
-    assert result["customer_id"].tolist() == customers["customer_id"].tolist()
-    assert result["segment_id"].tolist() == [2, 0, 1]
-    assert pd.api.types.is_integer_dtype(result["segment_id"])
+
+def test_17_comparison_schema_and_mae_order(code):
+    class Fake:
+        def __init__(self, v):
+            self.v = v
+        def predict(self, X):
+            return np.array(self.v)
+    y = pd.Series([0.0, 2.0])
+    X = pd.DataFrame({"a": [1, 2]})
+    res = code["evaluate_models"]({"bad": Fake([9, 9]), "good": Fake([0, 2])}, X, y)
+    assert list(res.columns) == ["model_name", "mae", "rmse", "r2"]
+    assert res.model_name.tolist() == ["good", "bad"] and res.index.tolist() == [0, 1]
 
 
-def test_T20_train_predict_write_segmentation_artifacts(app, tmp_path, monkeypatch):
-    invoice_rows(18, 3).to_csv(tmp_path / "retail_train.csv", index=False)
-    invoice_rows(12, 3).to_csv(tmp_path / "retail_test.csv", index=False)
-    future = invoice_rows(7, 2)
-    future.to_csv(tmp_path / "retail_predict.csv", index=False)
+def test_18_selection_reuses_existing_instance(code):
+    a, b = object(), object()
+    cmp = pd.DataFrame({"model_name": ["second", "first"], "mae": [1, 2]})
+    name, model = code["select_best_model"](cmp, {"first": a, "second": b})
+    assert name == "second" and model is b
+
+
+def test_19_predict_clips_rounds_and_keeps_id_order(code):
+    class Fake:
+        def predict(self, X):
+            return np.array([-2.13, 14.264, 2.567])
+    df = sample(3, False)
+    df["reading_id"] = ["c", "a", "b"]
+    df["start_hour"] = 1
+    df["is_weekend"] = 0
+    df["temperature_gap_c"] = 40
+    df["load_rate_tph"] = 1
+    got = code["predict_energy"](Fake(), df)
+    assert got.columns.tolist() == ["reading_id", "predicted_energy_kwh"]
+    assert got["reading_id"].tolist() == ["c", "a", "b"]
+    assert got["predicted_energy_kwh"].tolist() == [0.0, 14.3, 2.6]
+
+
+def test_20_saved_model_and_separate_prediction(code, tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
-
-    name, comparison = app["train"]()
-    assert name in comparison["model_name"].tolist()
-    assert (tmp_path / "best_model.pkl").is_file()
-    assert (tmp_path / "model_comparison.csv").is_file()
-    assert isinstance(joblib.load(tmp_path / "best_model.pkl"), Pipeline)
-
-    result = app["predict"]()
-    assert len(result) == 7
-    assert (tmp_path / "retail_segments.csv").is_file()
-    assert pd.read_csv(tmp_path / "retail_segments.csv").columns.tolist() == [
-        "customer_id",
-        "segment_id",
-    ]
+    write(tmp_path, sample(140), "cooling_train.csv")
+    write(tmp_path, sample(45), "cooling_test.csv")
+    write(tmp_path, sample(13, False), "cooling_predict.csv")
+    name, comparison = code["train"]()
+    assert name in {"ridge_regression", "random_forest"}
+    assert Path("best_model.pkl").exists() and Path("model_comparison.csv").exists()
+    assert list(pd.read_csv("model_comparison.csv").columns) == ["model_name", "mae", "rmse", "r2"]
+    loaded = joblib.load("best_model.pkl")
+    assert np.isfinite(loaded.predict(code["load_data"]("cooling_predict.csv")[code["FEATURES"]])).all()
+    original = code["train_models"]
+    code["train_models"] = lambda *a, **k: (_ for _ in ()).throw(AssertionError("prediction retrained"))
+    try:
+        got = code["predict"]()
+    finally:
+        code["train_models"] = original
+    assert len(got) == 13 and Path("cooling_predictions.csv").exists()
+    assert pd.read_csv("cooling_predictions.csv").columns.tolist() == ["reading_id", "predicted_energy_kwh"]

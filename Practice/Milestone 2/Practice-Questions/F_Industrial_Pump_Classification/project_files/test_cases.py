@@ -21,7 +21,7 @@ from sklearn.metrics import accuracy_score, f1_score
 from sklearn.pipeline import Pipeline
 
 
-NOTEBOOK = Path(os.getenv("MS2_NOTEBOOK", "solution_p1.ipynb"))
+NOTEBOOK = Path(os.getenv("MS2_NOTEBOOK", "solution_p2.ipynb"))
 
 
 def _load_functions():

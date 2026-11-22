@@ -28,9 +28,9 @@ OUT = 'predicted_fuel_consumed_litres'
 def load_notebook_definitions():
     candidates = [
         os.environ.get('MS2_NOTEBOOK'),
-        'solution_with_code.ipynb',
-        'solution.ipynb',
-        'solution1.ipynb',
+        # 'solution_with_code.ipynb',
+        # 'solution.ipynb',
+        # 'solution1.ipynb',
         'solution_p1.ipynb',
         'solution_p2.ipynb',
     ]

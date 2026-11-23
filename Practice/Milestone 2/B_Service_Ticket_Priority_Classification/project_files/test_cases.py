@@ -24,22 +24,12 @@ CASE = "b"
 @pytest.fixture(scope="module")
 def s():
     """Load imports, constants, classes and functions without running workflow calls."""
-    env_notebook = os.environ.get("MS2_NOTEBOOK")
-    candidates = [
-        env_notebook,
-        # "solution_with_code.ipynb",
-        # "solution.ipynb",
-        # "solution1.ipynb",
-        "solution_p1.ipynb",
-        "solution_p2.ipynb",
-    ]
-    candidates = [name for name in candidates if name]
-    notebook_path = next((BASE / name for name in candidates if (BASE / name).is_file()), None)
-    if notebook_path is None:
-        raise FileNotFoundError(
-            "No supported notebook found. Expected one of: " + ", ".join(candidates)
-        )
-    notebook_name = notebook_path.name
+    
+    notebook_path = BASE / "solution_p2.ipynb"
+
+    if not notebook_path.is_file():
+        raise FileNotFoundError(f"Notebook not found: {notebook_path}")
+
     notebook = nbformat.read(notebook_path, as_version=4)
     ns = {"__name__": "notebook_under_test"}
 
@@ -47,14 +37,21 @@ def s():
         ast.Import, ast.ImportFrom, ast.Assign, ast.AnnAssign,
         ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef,
     )
+
     for cell in notebook.cells:
         if cell.cell_type != "code" or not cell.source.strip():
             continue
+
         tree = ast.parse(cell.source, filename=str(notebook_path))
-        tree.body = [node for node in tree.body if isinstance(node, allowed_nodes)]
+        tree.body = [
+            node for node in tree.body
+            if isinstance(node, allowed_nodes)
+        ]
+
         if tree.body:
             ast.fix_missing_locations(tree)
             exec(compile(tree, str(notebook_path), "exec"), ns)
+
     return ns
 
 
